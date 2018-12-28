@@ -401,16 +401,6 @@ public class Boot
     }
 
     /**
-     * Are we a trial (experiment) recording for a Greenfoot user trial?  This should
-     * always be hardcoded to false in mainstream Greenfoot releases, and only changed
-     * in special releases for running Greenfoot user trials.
-     */
-    public static boolean isTrialRecording()
-    {
-        return false;
-    }
-
-    /**
      * Hide (and dispose) the splash window
      */
     public void disposeSplashWindow()

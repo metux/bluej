@@ -138,17 +138,6 @@ class DataSubmitter
                 {
                     SwingUtilities.invokeLater(() -> {
                         ExtensionsManager.getInstance().delegateEvent(new ApplicationEvent(ApplicationEvent.DATA_SUBMISSION_FAILED_EVENT));
-                        Platform.runLater(() ->
-                        {
-                            if (Boot.isTrialRecording())
-                            {
-                                // If we just gave up, and we are specifically in a trial, show a dialog
-                                // to the user warning them of this:
-                                if (!Config.isGreenfoot()) // Greenfoot shows the dialog on the Greenfoot VM, only show if we are BlueJ:
-                                    new DataSubmissionFailedDialog().show();
-                                Project.getProjects().forEach(project -> project.setAllEditorStatus(" - NOT RECORDING"));
-                            }
-                        });
                     });
                 }
             }
@@ -164,8 +153,8 @@ class DataSubmitter
     private static boolean postData(Event evt)
     {   
         HttpParams params = new BasicHttpParams();
-        HttpConnectionParams.setConnectionTimeout(params, Boot.isTrialRecording() ? 30000 : 10000);
-        HttpConnectionParams.setSoTimeout(params, Boot.isTrialRecording() ? 30000 : 10000);
+        HttpConnectionParams.setConnectionTimeout(params, 10000);
+        HttpConnectionParams.setSoTimeout(params, 10000);
         HttpClient client = new DefaultHttpClient(params);
         
         try {
