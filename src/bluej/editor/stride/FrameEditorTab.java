@@ -2829,18 +2829,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     }
 
     @Override
-    @OnThread(Tag.FXPlatform)
-    public void recordShowHideFrameCatalogue(boolean show, FrameCatalogue.ShowReason reason)
-    {
-        FrameCursor focusedCursor = getFocusedCursor();
-        editor.getWatcher().recordShowHideFrameCatalogue(
-                focusedCursor != null ? getXPath(focusedCursor.getEnclosingFrame()) : null,
-                focusedCursor != null ? focusedCursor.getCursorIndex() : -1,
-                show,
-                reason);
-    }
-
-    @Override
     @OnThread(Tag.FX)
     public ImageView makeClassImageView()
     {

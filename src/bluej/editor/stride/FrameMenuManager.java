@@ -133,12 +133,10 @@ class FrameMenuManager extends TabMenuManager
                 }
             });
 
-            FXPlatformConsumer<? super Boolean> frameCatalogueShownListener = newValue ->
-                    editor.recordShowHideFrameCatalogue(newValue, FrameCatalogue.ShowReason.MENU_OR_SHORTCUT);
             ObservableList<MenuItem> standardViewMenuItems = FXCollections.observableArrayList(
                     JavaFXUtil.makeMenuItem(Config.getString("frame.viewmenu.nextError"), editor::nextError, new KeyCharacterCombination("k", KeyCombination.SHORTCUT_DOWN))
                     ,new SeparatorMenuItem()
-                    ,JavaFXUtil.makeCheckMenuItem(Config.getString("frame.viewmenu.cheatsheet"), editor.cheatSheetShowingProperty(), new KeyCodeCombination(KeyCode.F1), frameCatalogueShownListener)
+                    ,JavaFXUtil.makeCheckMenuItem(Config.getString("frame.viewmenu.cheatsheet"), editor.cheatSheetShowingProperty(), new KeyCodeCombination(KeyCode.F1), null)
                     ,birdsEyeItem
                     ,JavaFXUtil.makeCheckMenuItem(Config.getString("frame.viewmenu.java"), javaPreviewShowing, new KeyCharacterCombination("j", KeyCombination.SHORTCUT_DOWN))
                     ,new SeparatorMenuItem()

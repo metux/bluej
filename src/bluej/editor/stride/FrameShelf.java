@@ -394,12 +394,6 @@ public class FrameShelf implements InteractionManager, CanvasParent, FrameTypeCh
     }
 
     @Override
-    public void recordShowHideFrameCatalogue(boolean show, FrameCatalogue.ShowReason reason)
-    {
-        // Not applicable
-    }
-
-    @Override
     @OnThread(Tag.FX)
     public ImageView makeClassImageView()
     {

@@ -158,16 +158,6 @@ public interface EditorWatcher
     void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId);
 
     /**
-     * Records the reason and other parameters when showing or hiding the FrameCatalogue of this object.
-     *
-     * @param enclosingFrameXpath  the path for the frame that include the focused cursor, if any.
-     * @param cursorIndex          the focused cursor's index (if any) within the enclosing frame.
-     * @param show                 true for showing and false for hiding
-     * @param reason               The user interaction which triggered the change.
-     */
-    void recordShowHideFrameCatalogue(String enclosingFrameXpath, int cursorIndex, boolean show, FrameCatalogue.ShowReason reason);
-
-    /**
      * Records the view change of a Stride editor, between Stride, Java or Birdseye view.
      *
      * @param enclosingFrameXpath  The path for the frame that include the focused cursor, if any. May be <code>null</code>.

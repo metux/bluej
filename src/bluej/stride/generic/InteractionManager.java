@@ -160,16 +160,6 @@ public interface InteractionManager extends SuggestionListParent
     BooleanProperty cheatSheetShowingProperty();
 
     /**
-     * Records the reason and the focused cursor info, if any, when showing or hiding the FrameCatalogue of this editor.
-     *
-     * @param show                 true for showing and false for hiding
-     * @param reason               The event which triggers the change.
-     *                             It is one of the values in the FrameCatalogue.ShowReason enum.
-     */
-    @OnThread(Tag.FXPlatform)
-    void recordShowHideFrameCatalogue(boolean show, FrameCatalogue.ShowReason reason);
-
-    /**
      * Gets an image for the class, suitable for displaying as an overlay in the class
      * body.  Return null if there's no such available image.
      */

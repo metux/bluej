@@ -220,10 +220,8 @@ public @OnThread(Tag.FX) class FXTabbedEditor
         StackPane catalogueScrollPaneStacked = new StackPane(catalogueBackground, catalogueScrollPane);
         catalogueScrollPaneStacked.setMinWidth(0.0);
 
-        FXPlatformConsumer<? super Boolean> frameCatalogueShownListener =
-                show -> recordShowHideFrameCatalogue(show, FrameCatalogue.ShowReason.ARROW);
         collapsibleCatalogueScrollPane = new UntitledCollapsiblePane(catalogueScrollPaneStacked, ArrowLocation.LEFT,
-                PrefMgr.getFlag(PrefMgr.STRIDE_SIDEBAR_SHOWING), frameCatalogueShownListener);
+                PrefMgr.getFlag(PrefMgr.STRIDE_SIDEBAR_SHOWING), null);
         collapsibleCatalogueScrollPane.addArrowWrapperStyleClass("catalogue-collapse");
         showingCatalogue.bindBidirectional(collapsibleCatalogueScrollPane.expandedProperty());
         JavaFXUtil.addChangeListener(showingCatalogue, expanded -> PrefMgr.setFlag(PrefMgr.STRIDE_SIDEBAR_SHOWING, expanded));
@@ -231,7 +229,6 @@ public @OnThread(Tag.FX) class FXTabbedEditor
         JavaFXUtil.runAfterCurrent(() -> {
             boolean flag = PrefMgr.getFlag(PrefMgr.STRIDE_SIDEBAR_SHOWING);
             showingCatalogue.set(flag);
-            recordShowHideFrameCatalogue(flag, FrameCatalogue.ShowReason.PROPERTIES);
         });
         JavaFXUtil.addStyleClass(collapsibleCatalogueScrollPane, "catalogue-scroll-collapsible");
         menuAndTabPane.setRight(collapsibleCatalogueScrollPane);
@@ -384,28 +381,6 @@ public @OnThread(Tag.FX) class FXTabbedEditor
         stage.titleProperty().bind(Bindings.concat(
             JavaFXUtil.applyPlatform(tabPane.getSelectionModel().selectedItemProperty(), t -> ((FXTab)t).windowTitleProperty(), "Unknown")
                 ," - ", projectTitle, titleStatus));
-    }
-
-    /**
-     * It prepares the recordShowHideFrameCatalogue event and invoke the appropriate method to register it.
-     * If there is an appropriate selected tab, will invoke this tab method after looking for a possible focused cursor.
-     * If there is no an appropriate selected tab, will invoke the DataCollector's recordShowHideFrameCatalogue method,
-     * without any info about any editor or a focused cursor.
-     *
-     * @param show    true for showing and false for hiding
-     * @param reason  The event which triggers the change.
-     *                It is one of the values in the FrameCatalogue.ShowReason enum.
-     */
-    @OnThread(Tag.FXPlatform)
-    private void recordShowHideFrameCatalogue(boolean show, FrameCatalogue.ShowReason reason)
-    {
-        Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
-        if (selectedTab instanceof InteractionManager) {
-            ((InteractionManager) selectedTab).recordShowHideFrameCatalogue(show, reason);
-        }
-        else {
-            DataCollector.showHideFrameCatalogue(getProject(), null, null, -1, show, reason);
-        }
     }
 
     @OnThread(Tag.FXPlatform)

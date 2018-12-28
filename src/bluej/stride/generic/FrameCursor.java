@@ -112,7 +112,6 @@ public class FrameCursor implements RecallableFocus
         {
             boolean show = !editor.cheatSheetShowingProperty().get();
             editor.cheatSheetShowingProperty().set(show);
-            editor.recordShowHideFrameCatalogue(show, FrameCatalogue.ShowReason.MENU_OR_SHORTCUT);
             return true;
         }
 
@@ -212,7 +211,6 @@ public class FrameCursor implements RecallableFocus
                     BooleanProperty cheatSheetShowingProperty = editor.cheatSheetShowingProperty();
                     if ( ! cheatSheetShowingProperty.get() ) {
                         cheatSheetShowingProperty.set(true);
-                        editor.recordShowHideFrameCatalogue(true, FrameCatalogue.ShowReason.UNKNOWN_FRAME_COMMAND);
                     }
                 }
                 //Ignore one-off mis-typing, just to stop every slip-up triggering a dialog
