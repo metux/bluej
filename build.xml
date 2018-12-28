@@ -8,6 +8,7 @@
 
     <!-- user specific properties that are edited to match local build environment-->
     <property file="build.properties"/>
+    <property environment="env"/>
     <dirname property="bluej_home" file="${ant.file}"/>
 
     <!-- 
@@ -27,6 +28,8 @@
     <property name="bluej.version.commas" value="${bluej.version.major},${bluej.version.minor},${bluej.version.release}" />
     <property name="bluej.version.nodots" value="${bluej.version.major}${bluej.version.minor}${bluej.version.release}${bluej.version.suffix}" />
     <property name="bluej.version.debian" value="${bluej.version.major}.${bluej.version.minor}.${bluej.version.release}${bluej.version.nonspace.suffix}" />
+
+    <property name="tools.jar" value="${env.JAVA_HOME}/lib/tools.jar"/>
 
     <!-- Set up common directories -->
     <property name="core.doc" value="doc/all"/>
@@ -80,8 +83,8 @@
         <pathelement location="${bluej_home}/lib/org.eclipse.jgit-4.9.0.jar"/>
         <pathelement location="${bluej_home}/lib/nsmenufx-2.1.4.jar"/>
         <pathelement location="${bluej_home}/lib/richtextfx-fat-0.9.0.jar"/>
-        <pathelement location="${build_java_home}/jre/lib/ext/jfxrt.jar"/>
-        <pathelement location="${bluej_home}/lib/tools.jar"/>
+        <pathelement location="${env.JAVA_HOME}/jre/lib/ext/jfxrt.jar"/>
+        <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
     </path>
 
     <import file="shared.xml"/>
@@ -100,6 +103,7 @@
                 <pathelement location="${threadchecker.pluginbuild}"/>
                 <pathelement location="${bluej_home}/lib/AppleJavaExtensions.jar"/>
                 <pathelement location="${bluej_home}/lib/nsmenufx-2.1.4.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
             </classpath>
             <compilerarg value="-Xmaxerrs"/><compilerarg value="100"/>
             <compilerarg value="-Xplugin:threadchecker.TCPlugin org.reflections"/>
@@ -112,6 +116,7 @@
     <target name="compile-threadchecker">
         <mkdir dir="${threadchecker.build}"/>
         <mkdir dir="${threadchecker.pluginbuild}"/>
+        <echo message="java home: ${env.JAVA_HOME}"/>
         <compile
             srcdir="${threadchecker.src}"
             destdir="${threadchecker.build}"/>
@@ -121,8 +126,7 @@
 
             >
             <classpath>
-                <pathelement location="${build_java_home}/lib/tools.jar"/>
-                <pathelement location="${bluej_home}/lib/tools.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
                 <pathelement location="${threadchecker.build}"/>
             </classpath>
         </compile>
@@ -149,7 +153,7 @@
                 <pathelement location="${threadchecker.build}"/>
                 <pathelement location="${threadchecker.pluginbuild}"/>
                 <pathelement location="${boot.jar}"/>
-                <pathelement location="${build_java_home}/lib/tools.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
             </classpath>
             <compilerarg value="-Xmaxerrs"/><compilerarg value="1000"/>
             <compilerarg value="-Xplugin:threadchecker.TCPlugin org.reflections"/>
@@ -170,7 +174,7 @@
                 <path refid="bluej.class.path"/>
                 <pathelement location="${boot.build}"/>
                 <pathelement location="${core.build}"/>
-                <pathelement location="${build_java_home}/lib/tools.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
             </classpath>
         </compile>
     </target>
@@ -266,7 +270,7 @@
             -->
             <classpath>
                 <pathelement location="${boot.jar}"/>
-                <pathelement location="${run_java_home}/lib/tools.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
                 <pathelement location="/System/Library/Java"/>
             </classpath>
             <jvmarg value="-Djavafx.embed.singleThread=true"/>
@@ -324,7 +328,7 @@
                 <pathelement location="${boot.jar}"/>
                 <pathelement location="${core.jar}"/>
                 <pathelement location="${extension.jar}"/>
-                <pathelement location="${run_java_home}/lib/tools.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
                 <pathelement location="${editor.jar}"/>
                 <pathelement location="${lang-stride.jar}"/>
                 <pathelement location="${test.build}"/>
@@ -361,7 +365,7 @@
             <classpath>
                 <path refid="bluej.class.path"/>
                 <pathelement location="${boot.jar}"/>
-                <pathelement location="${build_java_home}/lib/tools.jar"/>
+                <pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
             </classpath>
         </javadoc>
     </target>
