@@ -1137,7 +1137,6 @@ public class FrameEditor implements Editor
             Platform.runLater(() -> {
                 panel.updateErrorOverviewBar(false);
                 List<DiagnosticWithShown> diagnostics = Utility.mapList(allLates, e -> e.toDiagnostic(javaFilename.getName(), frameFilename));
-                watcher.recordLateErrors(diagnostics, compilationIdentifier);
             });
         });
     }

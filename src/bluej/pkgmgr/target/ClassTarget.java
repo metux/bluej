@@ -2802,15 +2802,6 @@ public class ClassTarget extends DependentTarget
     }
 
     @Override
-    public void recordLateErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier)
-    {
-        if (diagnostics.isEmpty())
-            return;
-
-        DataCollector.compiled(getPackage().getProject(), getPackage(), new CompileInputFile[] {getCompileInputFile()}, diagnostics, false, CompileReason.LATE, compilationIdentifier);
-    }
-
-    @Override
     public void recordFix(int errorIdentifier, int fixIndex)
     {
         DataCollector.fixExecuted(getPackage(), errorIdentifier, fixIndex);

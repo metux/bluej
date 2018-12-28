@@ -115,11 +115,6 @@ public interface EditorWatcher
     void recordClose();
 
     /**
-     * Record a list of late errors that were found.
-     */
-    void recordLateErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier);
-
-    /**
      * Record that a given quick fix was selected
      * @param errorIdentifier Integer id of the error
      * @param fixIndex The index in the quick fix list, corresponding to the list passed earlier to recordShowErrorMessage for this error id
