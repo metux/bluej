@@ -90,13 +90,6 @@ public interface EditorWatcher
     void clearAllBreakpoints();
 
     /**
-     * Record that a given quick fix was selected
-     * @param errorIdentifier Integer id of the error
-     * @param fixIndex The index in the quick fix list, corresponding to the list passed earlier to recordShowErrorMessage for this error id
-     */
-    void recordFix(int errorIdentifier, int fixIndex);
-
-    /**
      * Notifies watcher whether we are showing the interface (docs) or not
      */
     void showingInterface(boolean showingInterface);

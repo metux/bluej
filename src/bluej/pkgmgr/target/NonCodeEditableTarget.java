@@ -60,9 +60,6 @@ public abstract class NonCodeEditableTarget extends EditableTarget
     public void setProperty(String key, String value) { }
 
     @Override
-    public void recordFix(int errorIdentifier, int fixIndex) { }
-
-    @Override
     @OnThread(Tag.Any)
     public void scheduleCompilation(boolean immediate, CompileReason reason, CompileType type) {}
 

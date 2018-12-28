@@ -2770,12 +2770,6 @@ public class ClassTarget extends DependentTarget
     }
 
     @Override
-    public void recordFix(int errorIdentifier, int fixIndex)
-    {
-        DataCollector.fixExecuted(getPackage(), errorIdentifier, fixIndex);
-    }
-
-    @Override
     public boolean isFront()
     {
         return isFront;

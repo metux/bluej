@@ -90,7 +90,6 @@ public class ErrorAndFixDisplay
             FixDisplay l = new FixDisplay("  Fix: " + fix.getDescription());
             l.onMouseClickedProperty().set(e ->
                 {
-                    recordExecute(fixes.indexOf(l));
                     fix.execute();
                     ErrorAndFixDisplay.this.hide();
                     slot.fixedError(error);
@@ -258,18 +257,10 @@ public class ErrorAndFixDisplay
     {
         if (highlighted != -1)
         {
-            recordExecute(highlighted);
             error.getFixSuggestions().get(highlighted).execute();
             ErrorAndFixDisplay.this.hide();
             slot.fixedError(error);
         }
-    }
-
-    @OnThread(Tag.FXPlatform)
-    private void recordExecute(int fixIndex)
-    {
-        final EditorWatcher watcher = editor.getFrameEditor().getWatcher();
-        watcher.recordFix(error.getIdentifier(), fixIndex);
     }
 }
 
