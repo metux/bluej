@@ -143,9 +143,6 @@ public interface InteractionManager extends SuggestionListParent
 
     FrameEditor getFrameEditor();
 
-    @OnThread(Tag.FXPlatform)
-    void recordErrorIndicatorShown(int identifier);
-
     boolean isEditable();
 
     @OnThread(Tag.FXPlatform)

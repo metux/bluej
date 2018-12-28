@@ -230,12 +230,6 @@ public class FrameShelf implements InteractionManager, CanvasParent, FrameTypeCh
     }
 
     @Override
-    public void recordErrorIndicatorShown(int identifier)
-    {
-        // Not applicable
-    }
-
-    @Override
     public void setupFrame(Frame f)
     {
         FXTabbedEditor.setupFrameDrag(f, true, () -> parent, () -> true, () -> selection);

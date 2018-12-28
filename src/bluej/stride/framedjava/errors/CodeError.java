@@ -269,20 +269,6 @@ public abstract class CodeError
     public void bindFresh(ObservableBooleanValue fresh, InteractionManager editor)
     {
         freshProperty.bind(fresh);
-        if (!visibleProperty().get())
-        {
-            // Add a listener to send an event when we become visible:
-            JavaFXUtil.listenOnce(visibleProperty(), vis -> {
-                if (vis) // Should always be true, but check anyway
-                {
-                    editor.recordErrorIndicatorShown(getIdentifier());
-                }
-            });
-        }
-        else
-        {
-            editor.recordErrorIndicatorShown(getIdentifier());
-        }
     }
 
     /**

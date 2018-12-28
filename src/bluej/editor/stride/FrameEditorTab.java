@@ -2817,13 +2817,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     }
 
     @Override
-    @OnThread(Tag.FXPlatform)
-    public void recordErrorIndicatorShown(int identifier)
-    {
-        editor.getWatcher().recordShowErrorIndicators(Collections.singletonList(identifier));
-    }
-
-    @Override
     public void showUndoDeleteBanner(int totalEffort)
     {
         //Debug.message("Total effort: " + totalEffort);
