@@ -120,13 +120,6 @@ public interface EditorWatcher
     void recordClose();
 
     /**
-     * Record that the given error indicator(s) (i.e. red error underlines) were shown in the editor,
-     * e.g. frame became non-fresh in Stride and so its underlines got shown.
-     * @param identifiers Integer ids of the errors
-     */
-    void recordShowErrorIndicators(Collection<Integer> identifiers);
-
-    /**
      * Record a list of early errors that were found.
      */
     void recordEarlyErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier);

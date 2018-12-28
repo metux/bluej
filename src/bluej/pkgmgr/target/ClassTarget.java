@@ -2811,12 +2811,6 @@ public class ClassTarget extends DependentTarget
     }
 
     @Override
-    public void recordShowErrorIndicators(Collection<Integer> identifiers)
-    {
-        DataCollector.showErrorIndicators(getPackage(), identifiers);
-    }
-
-    @Override
     public void recordEarlyErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier)
     {
         if (diagnostics.isEmpty())

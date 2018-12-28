@@ -84,9 +84,6 @@ public abstract class NonCodeEditableTarget extends EditableTarget
     public void recordFix(int errorIdentifier, int fixIndex) { }
 
     @Override
-    public void recordShowErrorIndicators(Collection<Integer> identifiers) { }
-
-    @Override
     @OnThread(Tag.Any)
     public void scheduleCompilation(boolean immediate, CompileReason reason, CompileType type) {}
 
