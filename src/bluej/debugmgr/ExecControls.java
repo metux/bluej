@@ -78,8 +78,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
-import com.sun.jdi.VMDisconnectedException;
-
 /**
  * Window for controlling the debugger.
  * <p>
@@ -415,7 +413,6 @@ public class ExecControls
      */
     private void setStackFrameDetails(DebuggerThread selectedThread, int frameNo)
     {
-        try {
             DebuggerClass currentClass = selectedThread.getCurrentClass(frameNo);
             DebuggerObject currentObject = selectedThread.getCurrentObject(frameNo);
             if(currentClass != null) {
@@ -450,11 +447,6 @@ public class ExecControls
             }
             
             localList.getItems().setAll(selectedThread.getLocalVariables(frameNo));
-        }
-        catch (VMDisconnectedException vmde)
-        {
-            // Do nothing.
-        }
     }
 
     /**
