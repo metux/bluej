@@ -108,18 +108,6 @@ public class DataCollector
      * error indicators have been shown before we've been told about the compile event that generated them.
      */
     private static final BitSet createdErrors = new BitSet();
-    
-    
-    /**
-     * Checks whether we should send data.  This takes into account whether we
-     * are in Greenfoot, and opt-in status.  It doesn't check whether we have stopped
-     * sending due to connection problems -- DataSubmitter keeps track of that.
-     */
-    @OnThread(Tag.Any)
-    private static synchronized boolean dontSend()
-    {
-        return (Config.isGreenfoot() && !Boot.isTrialRecording()) || !recordingThisSession;
-    }
 
     @OnThread(Tag.FXPlatform)
     private static synchronized void startSession()
@@ -267,14 +255,10 @@ public class DataCollector
     {
         if (Config.isGreenfoot() && !Boot.isTrialRecording()) return;
         startSession();
-        if (dontSend()) return;
-        DataCollectorImpl.bluejOpened(osVersion, javaVersion, bluejVersion, interfaceLanguage, extensions);
     }
     
     public static void bluejClosed()
     {
-        if (dontSend()) return;
-        DataCollectorImpl.bluejClosed();
     }
 
     /**
@@ -297,134 +281,75 @@ public class DataCollector
      */
     public static void compiled(Project proj, Package pkg, CompileInputFile[] sources, List<DiagnosticWithShown> diagnostics, boolean success, CompileReason reason, int compilationSequence)
     {
-        if (dontSend()) return;
-
-        // This bitset will be filled with all errors which we've already been told are shown,
-        // but which we couldn't send to the server because we hadn't yet sent the compilation
-        // event which notifies the server of their creation:
-        Set<Integer> pendingShow = new HashSet<>();
-
-        for (DiagnosticWithShown dws : diagnostics)
-        {
-            // If we have been told already that the error has been shown to the user,
-            // we want to send a new event afterwards with the shown:
-            // Or, if it's just been shown now:
-            if (shownErrorIndicators.get(dws.getDiagnostic().getIdentifier()) || dws.wasShownToUser())
-            {
-                pendingShow.add(dws.getDiagnostic().getIdentifier());
-                shownErrorIndicators.set(dws.getDiagnostic().getIdentifier());
-            }
-
-            createdErrors.set(dws.getDiagnostic().getIdentifier());
-        }
-        DataCollectorImpl.compiled(proj, pkg, sources, diagnostics, success, reason, compilationSequence);
-        if (!pendingShow.isEmpty())
-        {
-            DataCollectorImpl.showErrorIndicators(pkg, pendingShow);
-        }
     }
 
     public static void debuggerTerminate(Project project)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerTerminate(project);
     }
     
     public static void debuggerChangeVisible(Project project, boolean newVis)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerChangeVisible(project, newVis);
     }
     
     public static void debuggerContinue(Project project, String threadName)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerContinue(project, threadName);
     }
 
     public static void debuggerHalt(Project project, String threadName, SourceLocation[] stack)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerHalt(project, threadName, stack);
     }
     
     public static void debuggerStepInto(Project project, String threadName, SourceLocation[] stack)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerStepInto(project, threadName, stack);
     }
     
     public static void debuggerStepOver(Project project, String threadName, SourceLocation[] stack)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerStepOver(project, threadName, stack);
     }
     
     public static void debuggerHitBreakpoint(Project project, String threadName, SourceLocation[] stack)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerHitBreakpoint(project, threadName, stack);
     }
 
     public static void invokeCompileError(Package pkg, String code, String compilationError)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.invokeCompileError(pkg, code, compilationError);
     }
     
     public static void invokeMethodSuccess(Package pkg, String code, String objName, String typeName, int testIdentifier, int invocationIdentifier)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.invokeMethodSuccess(pkg, code, objName, typeName, testIdentifier, invocationIdentifier);
     }
     
     public static void invokeMethodException(Package pkg, String code, ExceptionDescription ed)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.invokeMethodException(pkg, code, ed);
     }
     
     public static void invokeMethodTerminated(Package pkg, String code)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.invokeMethodTerminated(pkg, code);
     }
 
     public static void assertTestMethod(Package pkg, int testIdentifier, int invocationIdentifier, 
             String assertion, String param1, String param2)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.assertTestMethod(pkg, testIdentifier, invocationIdentifier, assertion, param1, param2);
     }
 
     public static void removeObject(Package pkg, String name)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.removeObject(pkg, name);
     }
 
     public static void codePadSuccess(Package pkg, String command, String output)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.codePadSuccess(pkg, command, output);
     }
 
     public static void codePadError(Package pkg, String command, String error)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.codePadError(pkg, command, error);
     }
 
     public static void codePadException(Package pkg, String command, String exception)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.codePadException(pkg, command, exception);
     }
 
     public static void teamCommitProject(Project project, Repository repo, Set<File> committedFiles)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.teamCommitProject(project, repo, committedFiles);
     }
 
     /**
@@ -435,44 +360,30 @@ public class DataCollector
      */
     public static void teamPushProject(Project project, Repository repo, Set<File> pushedFiles)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.teamPushProject(project, repo, pushedFiles);
     }
 
     public static void teamShareProject(Project project, Repository repo)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.teamShareProject(project, repo);
     }
 
     public static void addClass(Package pkg, ClassTarget ct)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.addClass(pkg, ct);
     }
 
     public static void teamUpdateProject(Project project, Repository repo, Set<File> updatedFiles)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.teamUpdateProject(project, repo, updatedFiles);
     }
 
     public static void teamHistoryProject(Project project, Repository repo)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.teamHistoryProject(project, repo);
     }
 
     public static void teamStatusProject(Project project, Repository repo, Map<File, String> status)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.teamStatusProject(project, repo, status);
     }
 
     public static void debuggerBreakpointToggle(Package pkg, File sourceFile, int lineNumber, boolean newState)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.debuggerBreakpointToggle(pkg, sourceFile, lineNumber, newState);
     }
 
     /**
@@ -487,10 +398,6 @@ public class DataCollector
      */
     public static void renamedClass(Package pkg, File oldFrameSourceFile, File newFrameSourceFile, File oldJavaSourceFile, File newJavaSourceFile)
     {
-        if (dontSend()) {
-            return;
-        }
-        DataCollectorImpl.renamedClass(pkg, oldFrameSourceFile, newFrameSourceFile, oldJavaSourceFile, newJavaSourceFile);
     }
 
     /**
@@ -502,28 +409,18 @@ public class DataCollector
      */
     public static void removeClass(Package pkg, File frameSourceFile, File javaSourceFile)
     {
-        if (dontSend()) {
-            return;
-        }
-        DataCollectorImpl.removeClass(pkg, frameSourceFile, javaSourceFile);
     }
 
     public static void openClass(Package pkg, File sourceFile)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.openClass(pkg, sourceFile);
     }
 
     public static void closeClass(Package pkg, File sourceFile)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.closeClass(pkg, sourceFile);
     }
 
     public static void selectClass(Package pkg, File sourceFile)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.selectClass(pkg, sourceFile);
     }
 
     /**
@@ -534,9 +431,6 @@ public class DataCollector
      */
     public static void convertStrideToJava(Package pkg, File oldSourceFile, File newSourceFile)
     {
-        if (dontSend()) return;
-        // Note the function takes Java, Stride rather than old or new.  Here, new is Java:
-        DataCollectorImpl.conversion(pkg, newSourceFile, oldSourceFile, true);
     }
 
     /**
@@ -547,100 +441,66 @@ public class DataCollector
      */
     public static void convertJavaToStride(Package pkg, File oldSourceFile, File newSourceFile)
     {
-        if (dontSend()) return;
-        // Note the function takes Java, Stride rather than old or new.  Here, old is Java:
-        DataCollectorImpl.conversion(pkg, oldSourceFile, newSourceFile, false);
     }
 
 
     public static void editJava(Package pkg, File path, String source, boolean includeOneLineEdits)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.edit(pkg, Collections.singletonList(new EditedFileInfo("diff", path, source, includeOneLineEdits, null, null)));
     }
 
     public static void editStride(Package pkg, File javaPath, String javaSource, File stridePath, String strideSource, StrideEditReason reason)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.edit(pkg, Arrays.asList(
-            new EditedFileInfo("diff_generated", javaPath, javaSource, true, stridePath, null),
-            new EditedFileInfo("diff", stridePath, strideSource, true, null, reason)
-        ));
     }
 
     public static void packageOpened(Package pkg)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.packageOpened(pkg);
     }
 
     public static void packageClosed(Package pkg)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.packageClosed(pkg);
     }
 
     public static void benchGet(Package pkg, String benchName, String typeName, int testIdentifier)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.benchGet(pkg, benchName, typeName, testIdentifier);        
     }
 
     public static void endTestMethod(Package pkg, int testIdentifier)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.endTestMethod(pkg, testIdentifier);        
     }
 
     public static void cancelTestMethod(Package pkg, int testIdentifier)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.cancelTestMethod(pkg, testIdentifier);        
     }
 
     public static void startTestMethod(Package pkg, int testIdentifier,
             File sourceFile, String testName)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.startTestMethod(pkg, testIdentifier, sourceFile, testName);        
     }
 
     public static void restartVM(Project project)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.restartVM(project);        
     }
 
     public static void testResult(Package pkg, DebuggerTestResult lastResult)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.testResult(pkg, lastResult);        
     }
 
     public static void projectOpened(Project proj, List<ExtensionWrapper> projectExtensions)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.projectOpened(proj, projectExtensions);        
     }
 
     public static void projectClosed(Project proj)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.projectClosed(proj);        
     }
 
     public static void inspectorObjectShow(Package pkg,
             ObjectInspector inspector, String benchName, String className,
             String displayName)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.inspectorObjectShow(pkg, inspector, benchName, className, displayName);        
     }
 
     public static void inspectorHide(Project project, Inspector inspector)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.inspectorHide(project, inspector);        
     }
 
     /**
@@ -652,41 +512,10 @@ public class DataCollector
      */
     public static void inspectorClassShow(Project proj, Package pkg, ClassInspector inspector, String className)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.inspectorClassShow(proj, pkg, inspector, className);        
     }
 
     public static void showErrorIndicators(Package pkg, Collection<Integer> errorIdentifiers)
     {
-        if (dontSend()) return;
-
-        HashSet<Integer> previouslyUnshown = new HashSet<>(errorIdentifiers);
-        previouslyUnshown.removeAll(asCollection(shownErrorIndicators));
-
-        if (previouslyUnshown.isEmpty())
-        {
-            // Already know about all of them:
-            return;
-        }
-        else
-        {
-            // We only send those that are  previously unshown, now shown, but have been sent as created:
-            HashSet<Integer> toSend = new HashSet<>(previouslyUnshown);
-            toSend.retainAll(asCollection(createdErrors));
-            if (!toSend.isEmpty())
-            {
-                // Creation has already been sent for the these events, so fine to follow it up with a shown event:
-                DataCollectorImpl.showErrorIndicators(pkg, toSend);
-            }
-            // Otherwise, we haven't sent the creation yet, so do nothing (will get sent later)
-
-
-            // Either way, flag it in the bitset as shown:
-            for (Integer id : previouslyUnshown)
-            {
-                shownErrorIndicators.set(id);
-            }
-        }
     }
 
     /**
@@ -745,24 +574,14 @@ public class DataCollector
 
     public static void showErrorMessage(Package pkg, int errorIdentifier, List<String> quickFixes)
     {
-        if (dontSend()) return;
-        // Only send an event for each error the first time it is shown:
-        if (shownErrorMessages.get(errorIdentifier))
-            return;
-        shownErrorMessages.set(errorIdentifier);
-        DataCollectorImpl.showErrorMessage(pkg, errorIdentifier, quickFixes);
     }
 
     public static void fixExecuted(Package aPackage, int errorIdentifier, int fixIndex)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.fixExecuted(aPackage, errorIdentifier, fixIndex);
     }
 
     public static void recordGreenfootEvent(Project project, GreenfootInterfaceEvent event)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.greenfootEvent(project, project.getPackage(""), event);
     }
 
     /**
@@ -778,8 +597,6 @@ public class DataCollector
      */
     public static void codeCompletionStarted(ClassTarget ct, Integer lineNumber, Integer columnNumber, String xpath, Integer subIndex, String stem, int codeCompletionId)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.codeCompletionStarted(ct.getPackage().getProject(), ct.getPackage(), lineNumber, columnNumber, xpath, subIndex, stem, codeCompletionId);
     }
 
     /**
@@ -796,14 +613,10 @@ public class DataCollector
      */
     public static void codeCompletionEnded(ClassTarget ct, Integer lineNumber, Integer columnNumber, String xpath, Integer subIndex, String stem, String replacement, int codeCompletionId)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.codeCompletionEnded(ct.getPackage().getProject(), ct.getPackage(), lineNumber, columnNumber, xpath, subIndex, stem, replacement, codeCompletionId);
     }
 
     public static void unknownFrameCommandKey(ClassTarget ct, String enclosingFrameXpath, int cursorIndex, char key)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.unknownFrameCommandKey(ct.getPackage().getProject(), ct.getPackage(), enclosingFrameXpath, cursorIndex, key);
     }
 
     /**
@@ -819,10 +632,6 @@ public class DataCollector
     public static void showHideFrameCatalogue(Project project, Package pkg, String enclosingFrameXpath, int cursorIndex,
                                               boolean show, FrameCatalogue.ShowReason reason)
     {
-        if (dontSend()) {
-            return;
-        }
-        DataCollectorImpl.showHideFrameCatalogue(project, pkg, enclosingFrameXpath, cursorIndex, show, reason);
     }
 
     /**
@@ -839,10 +648,6 @@ public class DataCollector
     public static void viewModeChange(Package pkg, File sourceFile, String enclosingFrameXpath, int cursorIndex,
                                       Frame.View oldView, Frame.View newView, Frame.ViewChangeReason reason)
     {
-        if (dontSend()) {
-            return;
-        }
-        DataCollectorImpl.viewModeChange(pkg.getProject(), pkg, sourceFile, enclosingFrameXpath, cursorIndex, oldView, newView, reason);
     }
 
     public static boolean hasGivenUp()
@@ -873,20 +678,14 @@ public class DataCollector
     public static void fixtureToObjectBench(Package pkg, File sourceFile,
             List<NamedTyped> objects)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.fixtureToObjectBench(pkg, sourceFile, objects);        
     }
 
     public static void objectBenchToFixture(Package pkg, File sourceFile,
             List<String> benchNames)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.objectBenchToFixture(pkg, sourceFile, benchNames);        
     }
 
     public static void showHideTerminal(Project project, boolean show)
     {
-        if (dontSend()) return;
-        DataCollectorImpl.showHideTerminal(project, show);        
     }
 }

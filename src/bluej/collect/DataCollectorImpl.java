@@ -451,8 +451,6 @@ public class DataCollectorImpl
         // These get set after constructor:
         private FileKey fileKey;
         private List<String> anonSource;
-        // Keep track of whether we actually sent the edit or not:
-        public boolean dontSend = false;
 
         EditedFileInfo(String editType, File path, String source, boolean includeOneLineEdits, File generatedFrom, StrideEditReason strideEditReason)
         {
@@ -505,7 +503,6 @@ public class DataCollectorImpl
 
                     if (patch.getDeltas().isEmpty() || (isOneLineDiff(patch) && !editedFile.includeOneLineEdits))
                     {
-                        editedFile.dontSend = true;
                         continue;
                     }
 
@@ -519,26 +516,12 @@ public class DataCollectorImpl
                     }
                 }
                 // If no files to send, cancel sending the whole edit event:
-                if (editedFiles.stream().allMatch(f -> f.dontSend))
-                {
-                    return null;
-                }
-                else
-                {
-                    return mpe;
-                }
+                return null;
             }
 
             @Override
             public void success(Map<FileKey, List<String>> fileVersions)
             {
-                for (EditedFileInfo editedFile : editedFiles)
-                {
-                    if (!editedFile.dontSend)
-                    {
-                        fileVersions.put(editedFile.fileKey, editedFile.anonSource);
-                    }
-                }
             }
         });
     }
