@@ -1166,7 +1166,6 @@ public class FrameEditor implements Editor
     {
         List<SyntaxCodeError> earlyList = earlyErrors.collect(Collectors.toList());
         List<DiagnosticWithShown> diagnostics = Utility.mapList(earlyList, e -> e.toDiagnostic(javaFilename.getName(), frameFilename));
-        watcher.recordEarlyErrors(diagnostics, compilationIdentifier);
         return !earlyList.isEmpty();
     }
 

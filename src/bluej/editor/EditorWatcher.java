@@ -115,11 +115,6 @@ public interface EditorWatcher
     void recordClose();
 
     /**
-     * Record a list of early errors that were found.
-     */
-    void recordEarlyErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier);
-
-    /**
      * Record a list of late errors that were found.
      */
     void recordLateErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier);
