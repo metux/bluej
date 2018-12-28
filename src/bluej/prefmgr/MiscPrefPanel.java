@@ -45,7 +45,6 @@ import javafx.scene.layout.VBox;
 
 import bluej.Boot;
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.utility.javafx.JavaFXUtil;
 import threadchecker.OnThread;
 import threadchecker.Tag;
@@ -68,9 +67,6 @@ public class MiscPrefPanel extends VBox
     private CheckBox showUncheckedBox; // show "unchecked" compiler warning
     private String jdkURLPropertyName;
     private TextField playerNameField;
-    private TextField participantIdentifierField;
-    private TextField experimentIdentifierField;
-    private Label statusLabel;
     private ComboBox<RunOnThread> runOnThread;
     private Node threadRunSetting;
 
@@ -92,53 +88,10 @@ public class MiscPrefPanel extends VBox
         
         if (Config.isGreenfoot()) {
             getChildren().add(makePlayerNamePanel());
-            if (Boot.isTrialRecording())
-            {
-                getChildren().add(makeDataCollectionPanel());
-            }
         }
         else {
             getChildren().add(makeVMPanel());
-            getChildren().add(makeDataCollectionPanel());
         }
-    }
-
-    private Node makeDataCollectionPanel()
-    {
-        List<Node> dataCollectionPanel = new ArrayList<>();
-        {
-            statusLabel = new Label(DataCollector.getOptInOutStatus());
-            statusLabel.setMinWidth(100.0);
-            Button optButton = new Button(Config.getString("prefmgr.collection.change"));
-            optButton.setOnAction(e ->{
-                DataCollector.changeOptInOut(false);
-                statusLabel.setText(DataCollector.getOptInOutStatus());
-            });
-            optButton.setMinWidth(Control.USE_PREF_SIZE);
-            dataCollectionPanel.add(PrefMgrDialog.labelledItem(statusLabel, optButton));
-        }
-        
-        
-        {
-            Label identifierLabel = new Label(Config.getString("prefmgr.collection.identifier.explanation") + ":");
-            dataCollectionPanel.add(identifierLabel);
-            
-            GridPane experimentParticipantPanel = new GridPane();
-            JavaFXUtil.addStyleClass(experimentParticipantPanel, "prefmgr-experiment-participant");
-            
-            Label experimentLabel = new Label(Config.getString("prefmgr.collection.identifier.experiment"));
-            experimentParticipantPanel.add(experimentLabel, 0, 0);
-            experimentIdentifierField = new TextField();
-            experimentParticipantPanel.add(experimentIdentifierField, 1, 0);
-            
-            Label participantLabel = new Label(Config.getString("prefmgr.collection.identifier.participant"));
-            experimentParticipantPanel.add(participantLabel, 0, 1);
-            participantIdentifierField = new TextField();
-            experimentParticipantPanel.add(participantIdentifierField, 1, 1);
-            
-            dataCollectionPanel.add(experimentParticipantPanel);
-        }
-        return PrefMgrDialog.headedVBox("prefmgr.collection.title", dataCollectionPanel);
     }
 
     // Not called in Greenfoot
@@ -213,9 +166,6 @@ public class MiscPrefPanel extends VBox
                 threadRunSetting.setVisible(true);
                 threadRunSetting.setManaged(true);
             }
-            statusLabel.setText(DataCollector.getOptInOutStatus());
-            experimentIdentifierField.setText(DataCollector.getExperimentIdentifier());
-            participantIdentifierField.setText(DataCollector.getParticipantIdentifier());
         }
         else
         {
@@ -235,11 +185,6 @@ public class MiscPrefPanel extends VBox
                 // Important to use .name() because we overrode toString() for localized display:
                 project.setRunOnThread(runOnThread.getSelectionModel().getSelectedItem());
             }
-
-            String expId = experimentIdentifierField.getText();
-            String partId = participantIdentifierField.getText();
-            DataCollector.setExperimentIdentifier(expId);
-            DataCollector.setParticipantIdentifier(partId);
         }
         
         String jdkURL = jdkURLField.getText();
