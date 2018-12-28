@@ -808,19 +808,6 @@ menu.help.copyright.line4=a\u00a0THIRDPARTYLICENSE.txt.
 # Collection
 # The content for these is HTML, so don't use <, > or & without escaping:
 
-collect.dialog.title=\u00da\u010das\u0165 na v\u00fdskume
-
-collect.dialog.header1=BlueJ dok\u00e1\u017ee zbiera\u0165 anonymn\u00e9 inform\u00e1cie o\u00a0\u010dinnosti pou\u017e\u00edvate\u013eov, aby mohol by\u0165 na\u010falej
-collect.dialog.header2=vylep\u0161ovan\u00fd a\u00a0aby sme lep\u0161ie pochopili ako sa \u0161tudenti u\u010dia programova\u0165.
-collect.dialog.header3=Pros\u00edme V\u00e1s o\u00a0pomoc \u00fa\u010das\u0165ou na v\u00fdskume.
-
-collect.dialog.no=Nie, \u010fakujem
-collect.dialog.yes=S\u00fahlas\u00edm s\u00a0\u00fa\u010das\u0165ou a\u00a0s\u00fa\u010dasne potvrdzujem, \u017ee som star\u0161\u00ed ne\u017e 16 rokov
-
-collect.dialog.ethics1=Svoj\u00edm s\u00fahlasom na v\u00fdskume n\u00e1m umo\u017e\u0148ujete zbiera\u0165 anonymn\u00e9 \u00fadaje o\u00a0tom, ako pou\u017e\u00edvate BlueJ v\u010d\u00edtane toho, ak\u00e9 funkcie pou\u017e\u00edvate a\u00a0ak\u00fd k\u00f3d p\u00ed\u0161ete. Tieto bud\u00fa pou\u017eit\u00e9 skupinou v\u00fdvoj\u00e1rov BlueJa a\u00a0in\u00fdmi akademick\u00fdmi pracovn\u00edkmi na to, aby lep\u0161ie pochopili ako sa \u0161tudenti u\u010dia programova\u0165 a\u00a0na to, aby mohol by\u0165 BlueJ na\u010falej vylep\u0161ovan\u00fd. Nie s\u00fa pren\u00e1\u0161an\u00e9 ani uchov\u00e1van\u00e9 \u017eiadne osobn\u00e9 \u00fadaje a\u00a0v\u0161etky koment\u00e1re v\u00a0zdrojov\u00fdch k\u00f3doch Javy s\u00fa pred odoslan\u00edm odstr\u00e1nen\u00e9.
-collect.dialog.ethics.seemore=Zisti\u0165 viac inform\u00e1ci\u00ed
-collect.dialog.ethics2=Ak zmen\u00edte n\u00e1zor s\u00favisiaci s\u00a0pomocou v\u00a0tejto \u010dinnosti, m\u00f4\u017eete svoje prispievanie kedyko\u013evek zastavi\u0165 pou\u017eit\u00edm prisl\u00fachaj\u00facej vo\u013eby v\u00a0dial\u00f3gu N\u00e1stroje \u00bb Predvo\u013eby \u00bb R\u00f4zne.
-
 # Raspberry Pi
 raspberrypi.error.sudo=Nie je dostupn\u00fd pr\u00edstup bez hesla pre sudo. Pokra\u010dujem bez mo\u017enosti pr\u00edstupu k\u00a0hardv\u00e9ru.\nViac inform\u00e1ci\u00ed n\u00e1jdete na adrese: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Nem\u00e1m pr\u00edstup k\u00a0hardv\u00e9ru

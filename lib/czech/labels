@@ -836,29 +836,6 @@ menu.help.copyright.line4=a THIRDPARTYLICENCE.txt
 #Collection
 # The content for these is HTML, so don't use <, > or & without escaping:
 
-collect.dialog.title=Research Participation
-
-collect.dialog.header1=BlueJ sb\u00edr\u00e1 anonymn\u00ed informace o interakc\u00edch pro zdokonalen\u00ed softwaru
-collect.dialog.header2=a pomoci v\u00fdzkumn\u00edk\u016fm pochopit, jak se studenti u\u010d\u00ed programovat.
-collect.dialog.header3=Pros\u00edme, pomo\u017ete svoj\u00ed \u00fa\u010dast\u00ed.
-
-collect.dialog.no=Ne, d\u011bkuji
-collect.dialog.yes=Souhlas\u00edm s \u00fa\u010dast\u00ed a potvrzuji, \u017ee je mi nejm\u00e9n\u011b 16 let
-
-collect.dialog.ethics1=Souhlas\u00edte-li s \u00fa\u010dast\u00ed, \
-povolujete n\u00e1m sb\u00edrat anonymn\u00ed data o va\u0161em pou\u017e\u00edv\u00e1n\u00ed BlueJ.\
-v\u010detn\u011b toho, jak\u00e9 vlastnosti pou\u017e\u00edv\u00e1te a jak\u00fd k\u00f3d p\u00ed\u0161ete.\
-Tyto informace budou pou\u017eity skupinou BlueJ a dal\u0161\u00edmi akademick\u00fdmi v\u00fdzkumn\u00edky \
-k pochopen\u00ed toho, jak se studenti u\u010d\u00ed programovat a zdokonalit samotn\u00fd BlueJ. \
-\u017d\u00e1dn\u00e9 osobn\u00ed informace nebudou p\u0159en\u00e1\u0161eny ani ukl\u00e1d\u00e1ny \
-a v\u0161echny koment\u00e1\u0159e budou p\u0159ed p\u0159enosem odstran\u011bny.
-
-collect.dialog.ethics.seemore=Pod\u00edvejte se na dal\u0161\u00ed informace
-
-collect.dialog.ethics2=Zm\u011bn\u00edte-li sv\u016fj n\u00e1zor na svoji pomoc s touto prac\u00ed \
-m\u016f\u017eete kdykoliv p\u0159estat p\u0159isp\u00edvat vyu\u017eit\u00edm za\u0161krt\u00e1vac\u00edho pole \
-v dialogov\u00e9m okn\u011b N\u00e1stroje/Nastaven\u00ed/Rozhran\u00ed
-
 #Raspberry Pi
 raspberrypi.error.sudo=P\u0159\u00edstup sudo (superuser do) bez ud\u00e1n\u00ed hesla nen\u00ed k dispozici. \
 Pokra\u010dujete bez p\u0159\u00edstupu k hardwaru.\n\

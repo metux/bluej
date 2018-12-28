@@ -801,19 +801,6 @@ menu.help.copyright.line4=y THIRDPARTYLICENSE.txt.
 #Collection
 # The content for these is HTML, so don't use <, > or & without escaping:
 
-collect.dialog.title=Participaci\u00f3n en la Investigaci\u00f3n 
-
-collect.dialog.header1=BlueJ recolecta an\u00f3nimamente informaci\u00f3n sobre la interacci\u00f3n para mejorar el software y ayudar a los investigadores 
-collect.dialog.header2=a enteder c\u00f3mo los estudiantes aprenden a programar.
-collect.dialog.header3=Por favor ay\u00fadenos participando.
-
-collect.dialog.no=No gracias
-collect.dialog.yes=Estoy de acuerdo en participar, y certifico que tengo 16 a\u00f1os o m\u00e1s
-
-collect.dialog.ethics1=Si est\u00e1 de acuerdo en tomar parte, perm\u00edtanos recolectar datos de manera an\u00f3nima acerca de su uso de BlueJ, incluyendo las caracter\u00edsticas que usted usa y el c\u00f3digo que escribe. Esto ser\u00e1 usado por el grupo BlueJ y otros investigadores acad\u00e9micos para ayudar a enteder c\u00f3mo los estudiantes aprenden a programar y mejorar BlueJ. Ninguna informaci\u00f3n personal ser\u00e1 transmitida a, o almacenada por nosotros, y cualquier comentario en alguna clase Java que usted escriba ser\u00e1 removido antes de ser transmitida.
-collect.dialog.ethics.seemore=Obtenga m\u00e1s informaci\u00f3n
-collect.dialog.ethics2=Si usted cambia de parecer acerca de ayudarnos con esta investigaci\u00f3n, usted pueder dejar de contribuir en cualquier momento usando el cuadro de verificaci\u00f3n en la ventana de di\u00e1logo en Herramientas/Preferencias/Miscel\u00e1nea.
-
 #Raspberry Pi
 raspberrypi.error.sudo=Acceso Sudo sin contrase\u00f1a no disponible. Continuando sin acceso al hardware.\nPara mayor informaci\u00f3n, por favor vea: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=No hay acceso al hardware

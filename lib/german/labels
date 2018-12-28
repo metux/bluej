@@ -806,19 +806,6 @@ menu.help.copyright.line4=und "THIRDPARTYLICENSE.txt".
 #Collection
 # The content for these is HTML, so don't use <, > or & without escaping:
 
-collect.dialog.title=Teilnahme am Forschungsprojekt
-
-collect.dialog.header1=BlueJ sammelt anonyme Interaktionsdaten um die Software zu verbessern und um
-collect.dialog.header2=Forschern dabei zu helfen zu untersuchen, wie Studenten Programmieren lernen.
-collect.dialog.header3=Bitte helfen Sie, indem Sie teilnehmen.
-
-collect.dialog.no=Nein danke
-collect.dialog.yes=Ich stimme zu, und ich versichere, dass ich 16 Jahre alt oder \u00e4lter bin
-
-collect.dialog.ethics1=Wenn Sie der Teilnahme zustimmen, erlauben Sie uns, anonyme Daten \u00fcber Ihre Benutzung von BlueJ aufzuzeichnen, einschlie\u00dflich benutzter Funktionen und Code, den Sie schreiben. Die Daten werden von der BlueJ-Gruppe und anderen Forschern verwendet um zu verstehen, wie Anf\u00e4nger Programmieren lernen, und um BlueJ zu verbessern. Es werden keine pers\u00f6nlichen Informationen \u00fcbertragen oder gespeichert, und alle Kommentare im Code werden vor der \u00dcbertragung entfernt.
-collect.dialog.ethics.seemore=Mehr Information hier
-collect.dialog.ethics2=Wenn Sie sich sp\u00e4ter anders entscheiden sollten, k\u00f6nnen Sie Ihre Teilnahme jederzeit im Einstellungen/Diverses-Dialog abstellen.
-
 #Raspberry Pi
 raspberrypi.error.sudo='Sudo'-Zugriff ohne Passwort nicht verf\u00fcgbar. Kein Hardwarezugriff.\nF\u00fcr mehr Information, siehe: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Kein Hardwarezugriff

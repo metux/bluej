@@ -792,19 +792,6 @@ menu.help.copyright.line2=redistribu\u00EDdo gratuitamente. Ele n\u00E3o pode se
 menu.help.copyright.line3=visando lucro  ou inclu\u00EDdo em outros pacotes que
 menu.help.copyright.line4=sejam vendidos visando lucro sem autoriza\u00E7\u00E3o por escrito.
 
-collect.dialog.title=Participa\u00E7\u00E3o em Pesquisa
-
-collect.dialog.header1=BlueJ coleta informa\u00E7\u00F5es an\u00F4nimas das intera\u00E7\u00F5es dos usu\u00E1rios para melhorar o software e ajudar pesquisadores
-collect.dialog.header2=a entender como estudantes aprendem a programar.
-collect.dialog.header3=Por favor nos ajude partipando.
-
-collect.dialog.no=N\u00E3o
-collect.dialog.yes=I concordo em participar, e certifico que tenho 16 anos de idade ou mais.
-
-collect.dialog.ethics1=Se voc\u00EA concordar em participar, voc\u00EA nos permitir\u00E1 coletar dados an\u00F4nimos sobre o uso do BlueJ, incluindo os recursos utilizados e o c\u00F3digo que voc\u00EA escreve. Isso ser\u00E1 usado pelo grupo BlueJ e outros pesquisadores acad\u00EAmicos para ajudar a compreender como os alunos aprendem a programar e para melhorar BlueJ. Nenhuma informa\u00E7\u00E3o pessoal ser\u00E1 transmitida para, ou armazenados por, n\u00F3s e qualquer coment\u00E1rio de classe Java que  voc\u00EA escreva ser\u00E3o removidos antes da transmiss\u00E3o.
-collect.dialog.ethics.seemore=Veja mais informa\u00E7\u00F5es
-collect.dialog.ethics2=Se voc\u00EA mudar de id\u00E9ia e n\u00E3o quiser mais nos ajudar com este trabalho, voc\u00EA pode parar de contribuir a qualquer momento usando a caixa de sele\u00E7\u00E3o localizada em: Ferramentas / Prefer\u00EAncias / Miscel\u00E2nea\r\n.
-
 #Raspberry Pi
 raspberrypi.error.sudo=Acesso de sudo sem senha n\u00E3o est\u00E1 dispon\u00EDvel. Continuando sem acesso \u00E0 hardware.\\nPara mais informa\u00E7\u00F5es, por favor consulte: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Sem acesso \u00E0 hardware
