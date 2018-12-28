@@ -3724,9 +3724,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
     public void notifyVisibleTab(boolean visible)
     {
         if (visible) {
-            if (watcher != null) {
-                watcher.recordSelected();
-            }
             checkForChangeOnDisk();
         }
         else

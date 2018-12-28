@@ -2756,15 +2756,6 @@ public class ClassTarget extends DependentTarget
         }
     }
 
-    @Override
-    public void recordSelected()
-    {
-        if (hasSourceCode())
-        {
-            DataCollector.selectClass(getPackage(), getSourceFile());
-        }
-    }
-
     public CompileInputFile getCompileInputFile()
     {
         return new CompileInputFile(getJavaSourceFile(), getSourceFile());

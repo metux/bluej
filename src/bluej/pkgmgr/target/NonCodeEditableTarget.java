@@ -72,9 +72,6 @@ public abstract class NonCodeEditableTarget extends EditableTarget
     public void recordOpen() { }
 
     @Override
-    public void recordSelected() { }
-
-    @Override
     public void recordEarlyErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier) { }
 
     @Override

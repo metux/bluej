@@ -2786,7 +2786,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     @OnThread(Tag.FXPlatform)
     public void notifySelected()
     {
-        editor.getWatcher().recordSelected();
     }
 
     @Override

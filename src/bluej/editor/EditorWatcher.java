@@ -110,11 +110,6 @@ public interface EditorWatcher
     void recordOpen();
 
     /**
-     * Record that the editor was selected (i.e. its tab was made visible in the tabbed editor)
-     */
-    void recordSelected();
-
-    /**
      * Record that the editor was closed
      */
     void recordClose();
