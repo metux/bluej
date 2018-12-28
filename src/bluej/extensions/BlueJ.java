@@ -384,20 +384,6 @@ public final class BlueJ
 
         return Config.getUserConfigDir();
     }
-    
-    /**
-     * Returns the data-collection user ID, for use with extensions that
-     * aim to augment the BlueJ data collection project.
-     * 
-     * Since extension version 2.10
-     * 
-     * @return the user ID, as read from the properties file.
-     */
-    public String getDataCollectionUniqueID()
-    {
-        return null;
-    }
-
 
     /**
      * Returns a property from BlueJ's properties,
