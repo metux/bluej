@@ -105,7 +105,7 @@ public class BProject
     {
         projectId.getBluejProject().restartVM();
     }
-    
+
     /**
      * Create and return a new package with the given fully qualified name.
      * The necessary directories and files will be created.

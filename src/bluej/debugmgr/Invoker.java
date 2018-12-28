@@ -1218,10 +1218,10 @@ public class Invoker
                                 resultType = "void";
                             }
                         }
-                        
+
                         PkgMgrFrame pmf = PkgMgrFrame.findFrame(pkg);
                     }
-                    
+
                     ir.setResultObject(resultObj);
                     watcher.putResult(resultObj, objName, ir);
                     break;

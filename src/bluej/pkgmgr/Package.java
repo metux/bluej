@@ -45,7 +45,6 @@ import bluej.pkgmgr.dependency.ExtendsDependency;
 import bluej.pkgmgr.dependency.ImplementsDependency;
 import bluej.utility.javafx.JavaFXUtil;
 import bluej.Config;
-import bluej.collect.DataCollectionCompileObserverWrapper;
 import bluej.compiler.CompileObserver;
 import bluej.compiler.Diagnostic;
 import bluej.compiler.FXCompileObserver;
@@ -1652,16 +1651,11 @@ public final class Package
      */
     private void doCompile(Collection<ClassTarget> targetList, FXCompileObserver edtObserver, CompileReason reason, CompileType type)
     {
-        CompileObserver observer = new EventqueueCompileObserverAdapter(new DataCollectionCompileObserverWrapper(project, edtObserver));
-        if (targetList.isEmpty()) {
-            return;
-        }
-
         List<CompileInputFile> srcFiles = Utility.mapList(targetList, ClassTarget::getCompileInputFile);
                
         if (srcFiles.size() > 0)
         {
-            JobQueue.getJobQueue().addJob(srcFiles.toArray(new CompileInputFile[0]), observer, project.getClassLoader(), project.getProjectDir(),
+            JobQueue.getJobQueue().addJob(srcFiles.toArray(new CompileInputFile[0]), null /* edtObserver ?*/, project.getClassLoader(), project.getProjectDir(),
                 ! PrefMgr.getFlag(PrefMgr.SHOW_UNCHECKED), project.getProjectCharset(), reason, type);
         }
     }

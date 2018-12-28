@@ -186,7 +186,7 @@ public class MiscPrefPanel extends VBox
                 project.setRunOnThread(runOnThread.getSelectionModel().getSelectedItem());
             }
         }
-        
+
         String jdkURL = jdkURLField.getText();
         Config.putPropString(jdkURLPropertyName, jdkURL);
 

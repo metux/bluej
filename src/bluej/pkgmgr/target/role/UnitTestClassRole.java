@@ -636,15 +636,7 @@ public class UnitTestClassRole extends ClassRole
             if (fixtureInsertLocation == null) {
                 return;
             }
-            
-            {
-                List<String> names = new ArrayList<String>();
-                for (ObjectWrapper obj : pmf.getObjectBench().getObjects())
-                {
-                    names.add(obj.getName());
-                }
-            }
-            
+
             // find the curly brackets for the setUp() method
             SourceSpan setupSpan = uta.getMethodBlockSpan("setUp");
 
