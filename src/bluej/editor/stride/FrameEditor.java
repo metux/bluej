@@ -24,7 +24,6 @@ package bluej.editor.stride;
 
 
 import bluej.Config;
-import bluej.collect.DiagnosticWithShown;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.compiler.Diagnostic;
@@ -1129,7 +1128,6 @@ public class FrameEditor implements Editor
             }
             Platform.runLater(() -> {
                 panel.updateErrorOverviewBar(false);
-                List<DiagnosticWithShown> diagnostics = Utility.mapList(allLates, e -> e.toDiagnostic(javaFilename.getName(), frameFilename));
             });
         });
     }
@@ -1157,7 +1155,6 @@ public class FrameEditor implements Editor
     boolean earlyErrorCheck(Stream<SyntaxCodeError> earlyErrors, int compilationIdentifier)
     {
         List<SyntaxCodeError> earlyList = earlyErrors.collect(Collectors.toList());
-        List<DiagnosticWithShown> diagnostics = Utility.mapList(earlyList, e -> e.toDiagnostic(javaFilename.getName(), frameFilename));
         return !earlyList.isEmpty();
     }
 

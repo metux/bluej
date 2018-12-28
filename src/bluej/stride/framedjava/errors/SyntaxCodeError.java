@@ -25,7 +25,6 @@ import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
-import bluej.collect.DiagnosticWithShown;
 import bluej.compiler.Diagnostic;
 import bluej.compiler.Diagnostic.DiagnosticOrigin;
 import bluej.stride.framedjava.ast.JavaFragment;

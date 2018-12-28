@@ -48,7 +48,6 @@ import java.util.stream.Collectors;
 import javax.swing.SwingUtilities;
 
 import bluej.Config;
-import bluej.collect.DiagnosticWithShown;
 import bluej.compiler.CompileInputFile;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;

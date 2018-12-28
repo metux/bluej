@@ -23,7 +23,6 @@ package bluej.stride.framedjava.errors;
 
 import java.io.File;
 
-import bluej.collect.DiagnosticWithShown;
 import bluej.compiler.CompilerAPICompiler;
 import bluej.compiler.Diagnostic;
 import bluej.compiler.Diagnostic.DiagnosticOrigin;
@@ -55,13 +54,5 @@ public abstract class DirectSlotError extends CodeError
     {
         super(code, CompilerAPICompiler.getNewErrorIdentifer());
         this.origin = origin;
-    }
-
-    @OnThread(Tag.FXPlatform)
-    public synchronized DiagnosticWithShown toDiagnostic(String javaFileName, File strideFileName)
-    {
-        final Diagnostic diagnostic = new Diagnostic(Diagnostic.ERROR, getMessage(), javaFileName, -1, -1, -1, -1, origin, getIdentifier());
-        diagnostic.setXPath(path, -1, -1);
-        return new DiagnosticWithShown(diagnostic, false, strideFileName);
     }
 }
