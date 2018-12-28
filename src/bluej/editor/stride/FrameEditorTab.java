@@ -2745,8 +2745,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     {
         if (!partOfMove && parent != null)
             editor.getWatcher().recordOpen();
-        else if (!partOfMove && parent == null)
-            editor.getWatcher().recordClose();
 
         this.parent.set(parent);
 

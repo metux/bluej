@@ -95,11 +95,6 @@ public interface EditorWatcher
     void recordOpen();
 
     /**
-     * Record that the editor was closed
-     */
-    void recordClose();
-
-    /**
      * Record that a given quick fix was selected
      * @param errorIdentifier Integer id of the error
      * @param fixIndex The index in the quick fix list, corresponding to the list passed earlier to recordShowErrorMessage for this error id

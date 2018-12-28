@@ -2725,16 +2725,6 @@ public class ClassTarget extends DependentTarget
     }
 
     @Override
-    public void recordClose()
-    {
-        if (hasSourceCode())
-        {
-            DataCollector.closeClass(getPackage(), getSourceFile());
-        }
-        recordedAsOpen = false;
-    }
-
-    @Override
     public void recordOpen()
     {
         if (recordedAsOpen == false && hasSourceCode())

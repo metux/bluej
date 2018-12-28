@@ -3727,10 +3727,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
             {
                 watcher.recordOpen();
             }
-            else if (!partOfMove && parent == null)
-            {
-                watcher.recordClose();
-            }
 
             // If we are closing, force a compilation in case there are pending changes:
             if (parent == null && saveState.isChanged())
