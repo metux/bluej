@@ -81,6 +81,7 @@
         <pathelement location="${bluej_home}/lib/nsmenufx-2.1.4.jar"/>
         <pathelement location="${bluej_home}/lib/richtextfx-fat-0.9.0.jar"/>
         <pathelement location="${build_java_home}/jre/lib/ext/jfxrt.jar"/>
+        <pathelement location="${bluej_home}/lib/tools.jar"/>
     </path>
 
     <import file="shared.xml"/>
@@ -121,6 +122,7 @@
             >
             <classpath>
                 <pathelement location="${build_java_home}/lib/tools.jar"/>
+                <pathelement location="${bluej_home}/lib/tools.jar"/>
                 <pathelement location="${threadchecker.build}"/>
             </classpath>
         </compile>
