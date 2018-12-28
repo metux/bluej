@@ -277,12 +277,6 @@ public class FrameEditor implements Editor
             {
                 throw new IOException(result.exception);
             }
-            
-            if (watcher != null)
-            {
-                watcher.recordStrideEdit(result.javaResult.javaSourceStringContent,
-                        result.savedSource, null);
-            }
         }
         else if (lastSavedJava == null)
         {
@@ -1349,11 +1343,7 @@ public class FrameEditor implements Editor
     public void recordEdits(StrideEditReason reason)
     {
         SaveResult result = saveFX();
-        if (result.exception == null)
-        {
-            watcher.recordStrideEdit(result.javaResult.javaSourceStringContent, result.savedSource, reason);
-        }
-        else
+        if (result.exception != null)
             Debug.reportError(result.exception);
     }
 

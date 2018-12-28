@@ -2725,12 +2725,6 @@ public class ClassTarget extends DependentTarget
     }
 
     @Override
-    public void recordStrideEdit(String latestJava, String latestStride, StrideEditReason reason)
-    {
-        DataCollector.editStride(getPackage(), getJavaSourceFile(), latestJava, getFrameSourceFile(), latestStride, reason);
-    }
-
-    @Override
     public void recordClose()
     {
         if (hasSourceCode())

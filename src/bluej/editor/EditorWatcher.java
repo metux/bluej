@@ -87,14 +87,6 @@ public interface EditorWatcher
      */
     public void scheduleCompilation(boolean immediate, CompileReason reason, CompileType type);
 
-    /**
-     * Records an edit to the Stride code.  Will only be called for Stride classes, not for Java classes.
-     * @param javaSource The current Java source
-     * @param strideSource The current Stride source
-     * @param reason The reason for the edit (may be null if unknown)
-     */
-    void recordStrideEdit(String javaSource, String strideSource, StrideEditReason reason);
-
     void clearAllBreakpoints();
 
     /**
