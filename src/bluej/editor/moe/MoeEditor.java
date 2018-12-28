@@ -580,9 +580,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
     {
         IOException failureException = null;
         if (saveState.isChanged()) {
-            // Record any edits with the data collection system:
-            recordEdit(true);
-            
             // Play it safe and avoid overwriting code that has been changed outside BlueJ (or at least,
             // outside *this* instance of BlueJ):
             checkForChangeOnDisk();
@@ -1488,9 +1485,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
                 }
             });
         }
-        
-        recordEdit(false);        
-        
         scheduleReparseRunner();
         respondingToChange = false;
     }
@@ -2623,8 +2617,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
         // but we don't want to send an edit event because of that:
         if (oldCaretLineNumber != getLineNumberAt(caretPos) && isOpen())
         {
-            recordEdit(true);
-
             cancelFreshState();
 
             // This is a workaround to overcome a bug in RichTextFX lib,
@@ -3501,19 +3493,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
     protected boolean containsSourceCode()
     {
         return sourceIsCode;
-    }
-
-    /**
-     * Notify the editor watcher of an edit (or save).
-     * @param includeOneLineEdits - will be true if it is considered unlikely that further edits will
-     *                     be localised to previous edit locations (line), or if the file has been saved.
-     */
-    private void recordEdit(boolean includeOneLineEdits)
-    {
-        if (watcher != null)
-        {
-            watcher.recordJavaEdit(sourceDocument.getText(0, sourceDocument.getLength()), includeOneLineEdits);
-        }
     }
 
     public bluej.editor.TextEditor assumeText()

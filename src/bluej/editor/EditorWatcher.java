@@ -88,13 +88,6 @@ public interface EditorWatcher
     public void scheduleCompilation(boolean immediate, CompileReason reason, CompileType type);
 
     /**
-     * Records an edit to the Java code.  Will only be called for Java classes, not for Stride classes.
-     * @param javaSource The current Java source
-     * @param includeOneLineEdits Whether to record if the edit (diff) only affects one line
-     */
-    void recordJavaEdit(String javaSource, boolean includeOneLineEdits);
-
-    /**
      * Records an edit to the Stride code.  Will only be called for Stride classes, not for Java classes.
      * @param javaSource The current Java source
      * @param strideSource The current Stride source

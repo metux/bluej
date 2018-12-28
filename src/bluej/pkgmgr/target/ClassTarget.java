@@ -2723,12 +2723,6 @@ public class ClassTarget extends DependentTarget
     {
         properties.put(key, value);
     }
-    
-    @Override
-    public void recordJavaEdit(String latest, boolean includeOneLineEdits)
-    {
-        DataCollector.editJava(getPackage(), getJavaSourceFile(), latest, includeOneLineEdits);
-    }
 
     @Override
     public void recordStrideEdit(String latestJava, String latestStride, StrideEditReason reason)
