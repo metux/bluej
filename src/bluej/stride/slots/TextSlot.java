@@ -845,13 +845,7 @@ public abstract class TextSlot<SLOT_FRAGMENT extends TextSlotFragment> implement
     private boolean executeSuggestion(SuggestionList suggestionList, int highlighted)
     {
         final int position = getStartOfCurWord();
-        String word = field.getCurWord();
-        final boolean success = field.executeCompletion(completionCalculator, highlighted, position);
-        if (success)
-        {
-            editor.recordCodeCompletionEnded(getSlotElement(), position, word, getText(), suggestionList.getRecordingId());
-        }
-        return success;
+        return field.executeCompletion(completionCalculator, highlighted, position);
     }
 
     public boolean isEmpty()

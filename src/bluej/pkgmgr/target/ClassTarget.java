@@ -2840,13 +2840,6 @@ public class ClassTarget extends DependentTarget
         DataCollector.fixExecuted(getPackage(), errorIdentifier, fixIndex);
     }
 
-    // See comment for DataCollector.codeCompletionEnded
-    @Override
-    public void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId)
-    {
-        DataCollector.codeCompletionEnded(this, lineNumber, columnNumber, xpath, elementOffset, stem, replacement, codeCompletionId);
-    }
-
     @Override
     public boolean isFront()
     {

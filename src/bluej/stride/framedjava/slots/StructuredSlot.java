@@ -869,7 +869,6 @@ public abstract class StructuredSlot<SLOT_FRAGMENT extends StructuredSlotFragmen
         topLevel.insertSuggestion(suggestionLocation, name, opening, params, token);
         modified();
         String completion = name + (params == null ? "" : "(" + params.stream().collect(Collectors.joining(",")) + ")");
-        editor.recordCodeCompletionEnded(getSlotElement(), topLevel.caretPosToStringPos(suggestionLocation, false), getCurSuggestionWord(), completion, codeCompletionId);
     }
     
     // Package-visible

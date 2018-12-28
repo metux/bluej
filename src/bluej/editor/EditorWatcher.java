@@ -143,9 +143,6 @@ public interface EditorWatcher
      */
     void recordFix(int errorIdentifier, int fixIndex);
 
-    // See corresponding DataCollector methods for more parameter info.
-    void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId);
-
     /**
      * Notifies watcher whether we are showing the interface (docs) or not
      */
