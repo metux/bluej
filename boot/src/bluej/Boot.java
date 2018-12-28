@@ -42,7 +42,6 @@ import java.util.concurrent.ExecutionException;
  * started to execute BlueJ. No other external classpath settings are necessary. 
  *
  * This loader finds and loads the known BlueJ classes and sets up the classpath.
- * While doing this, it displays a splash screen.
  *
  * @author  Andrew Patterson
  * @author  Damiano Bolla
@@ -145,9 +144,6 @@ public class Boot
     private static File bluejLibDir;
     private static final ArrayList<File> macInitialProjects = new ArrayList<>();
 
-    @OnThread(Tag.FXPlatform)
-    private SplashWindow splashWindow;
-    
     public static String[] cmdLineArgs;      // Command line arguments
 
     // ---- instance part ----
@@ -162,23 +158,8 @@ public class Boot
      * 
      * @param props the properties (created from the args)
      */
-    private Boot(Properties props, final FXPlatformSupplier<Image> image)
+    private Boot(Properties props)
     {
-        CompletableFuture<Boolean> shown = new CompletableFuture<>();
-        // Display the splash window:
-        Platform.runLater(() -> {
-            splashWindow = new SplashWindow(image.get());
-            shown.complete(true);
-        });
-        try
-        {
-            shown.get();
-        }
-        catch (InterruptedException | ExecutionException e)
-        {
-            // Just ignore it and continue, I guess...
-        }
-
         this.commandLineProps = props;
     }
 
@@ -210,31 +191,7 @@ public class Boot
     {
         Properties commandLineProps = processCommandLineProperties(cmdLineArgs);
         isGreenfoot = commandLineProps.getProperty("greenfoot", "false").equals("true");
-        
-        FXPlatformSupplier<Image> image = new FXPlatformSupplier<Image>()
-        {
-            @Override
-            @OnThread(Tag.FXPlatform)
-            public Image get()
-            {
-                URL url = getClass().getResource(isGreenfoot ? "greenfoot-splash.png" : "gen-bluej-splash.png");
-                if (url != null)
-                    return new Image(url.toString());
-                else
-                {
-                    // Just use blank
-                    WritableImage writableImage = new WritableImage(500, 300);
-                    for (int y = 0; y < writableImage.getHeight(); y++)
-                    {
-                        for (int x = 0; x < writableImage.getWidth(); x++)
-                        {
-                            writableImage.getPixelWriter().setColor(x, y, javafx.scene.paint.Color.WHITE);
-                        }
-                    }
-                    return writableImage;
-                }
-            }
-        };
+
         if(isGreenfoot) {
             runtimeJars = greenfootUserJars;
             userJars = greenfootUserJars;
@@ -245,7 +202,7 @@ public class Boot
         jfxrtJar = commandLineProps.getProperty("jfxrt.jarpath");
         
         try {
-            instance = new Boot(commandLineProps, image);
+            instance = new Boot(commandLineProps);
             instance.bootBluej();
         }
         catch (Throwable t) {
@@ -398,21 +355,6 @@ public class Boot
                 props.put(propName, propValue);
         }
         return props;
-    }
-
-    /**
-     * Hide (and dispose) the splash window
-     */
-    public void disposeSplashWindow()
-    {
-        Platform.runLater(() ->
-        {
-            if (splashWindow != null)
-            {
-                splashWindow.hide();
-                splashWindow = null;
-            }
-        });
     }
 
     /**

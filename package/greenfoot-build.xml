@@ -176,7 +176,6 @@
 
         <!-- Copy other files needed by the installer -->
         <copy todir="install_tmp" file="greenfoot-dist.jar" />
-        <copy todir="install_tmp" file="greenfoot-splash.png" />
 
         <!-- compile the installer -->
         <!-- Note: can't use compile task here because we are setting source 1.3 -->

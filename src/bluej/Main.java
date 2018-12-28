@@ -178,8 +178,6 @@ public class Main
         }
 
         guiHandler.initialOpenComplete(oneOpened);
-        
-        Boot.getInstance().disposeSplashWindow();
         ExtensionsManager.getInstance().delegateEvent(new ApplicationEvent(ApplicationEvent.APP_READY_EVENT));
     }
 
