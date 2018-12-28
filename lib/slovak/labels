@@ -821,10 +821,6 @@ collect.dialog.ethics1=Svoj\u00edm s\u00fahlasom na v\u00fdskume n\u00e1m umo\u0
 collect.dialog.ethics.seemore=Zisti\u0165 viac inform\u00e1ci\u00ed
 collect.dialog.ethics2=Ak zmen\u00edte n\u00e1zor s\u00favisiaci s\u00a0pomocou v\u00a0tejto \u010dinnosti, m\u00f4\u017eete svoje prispievanie kedyko\u013evek zastavi\u0165 pou\u017eit\u00edm prisl\u00fachaj\u00facej vo\u013eby v\u00a0dial\u00f3gu N\u00e1stroje \u00bb Predvo\u013eby \u00bb R\u00f4zne.
 
-collect.status.optedin=V\u00a0s\u00fa\u010dasnosti je odosielanie anonymn\u00fdch zozbieran\u00fdch \u00fadajov povolen\u00e9
-collect.status.nextsession=Odosielanie anonymn\u00fdch zozbieran\u00fdch \u00fadajov bude povolen\u00e9 po re\u0161tartovan\u00ed BlueJa
-collect.status.optedout=V\u00a0s\u00fa\u010dasnosti sa nepodie\u013eate na v\u00fdskume odosielan\u00edm anonymn\u00fdch zozbieran\u00fdch \u00fadajov
-
 # Raspberry Pi
 raspberrypi.error.sudo=Nie je dostupn\u00fd pr\u00edstup bez hesla pre sudo. Pokra\u010dujem bez mo\u017enosti pr\u00edstupu k\u00a0hardv\u00e9ru.\nViac inform\u00e1ci\u00ed n\u00e1jdete na adrese: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Nem\u00e1m pr\u00edstup k\u00a0hardv\u00e9ru

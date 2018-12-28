@@ -23,7 +23,6 @@ package bluej.debugmgr;
 
 import bluej.BlueJTheme;
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.debugger.Debugger;
 import bluej.debugger.DebuggerClass;
 import bluej.debugger.DebuggerField;
@@ -205,11 +204,9 @@ public class ExecControls
         window.setScene(scene);
         Config.loadAndTrackPositionAndSize(window, "bluej.debugger");
         window.setOnShown(e -> {
-            DataCollector.debuggerChangeVisible(project, true);
             showingProperty.set(true);
         });
         window.setOnHidden(e -> {
-            DataCollector.debuggerChangeVisible(project, false);
             showingProperty.set(false);
         });
         // showingProperty should mirror the window state.  Note that it
@@ -723,7 +720,6 @@ public class ExecControls
             project.removeStepMarks();
             if (details.isSuspended()) {
                 details.getThread().cont();
-                DataCollector.debuggerContinue(project, details.getThread().getName());
             }
         }
     }
@@ -746,7 +742,6 @@ public class ExecControls
                 // if we press this whilst we are already
                 // restarting the remote VM
                 project.restartVM();
-                DataCollector.debuggerTerminate(project);
             }
             catch (IllegalStateException ise) { }
         }

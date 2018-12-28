@@ -26,7 +26,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.groupwork.StatusHandle;
 import bluej.groupwork.TeamStatusInfo;
 import bluej.groupwork.TeamUtils;
@@ -192,8 +191,6 @@ public class CommitAction extends TeamAction
             if (! aborted) {
                 commitCommentsFrame.stopProgress();
                 if (! result.isError() && ! result.wasAborted()) {
-                    DataCollector.teamCommitProject(project, statusHandle.getRepository(), files);
-
                     if (project.getTeamSettingsController().isDVCS()) {
                         //if DVCS, display message on commit/push window.
                         commitCommentsFrame.displayMessage(Config.getString("team.commit.statusDone"));

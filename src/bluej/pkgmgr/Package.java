@@ -46,7 +46,6 @@ import bluej.pkgmgr.dependency.ImplementsDependency;
 import bluej.utility.javafx.JavaFXUtil;
 import bluej.Config;
 import bluej.collect.DataCollectionCompileObserverWrapper;
-import bluej.collect.DataCollector;
 import bluej.compiler.CompileObserver;
 import bluej.compiler.Diagnostic;
 import bluej.compiler.FXCompileObserver;
@@ -866,13 +865,6 @@ public final class Package
             addTarget(target);
         }
 
-        if (!recorded)
-        {
-            DataCollector.packageOpened(this);
-            recorded = true;
-        }
-
-
         List<Target> targetsCopy;
         synchronized (this)
         {
@@ -1274,8 +1266,6 @@ public final class Package
 
         getEditor().findSpaceForVertex(t);
         t.analyseSource();
-        
-        DataCollector.addClass(this, t);
 
         return NO_ERROR;
     }

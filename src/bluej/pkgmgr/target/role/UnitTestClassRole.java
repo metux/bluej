@@ -22,7 +22,6 @@
 package bluej.pkgmgr.target.role;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.debugger.DebuggerObject;
@@ -466,28 +465,6 @@ public class UnitTestClassRole extends ClassRole
         new Thread() {
             @OnThread(value = Tag.Worker, ignoreParent = true)
             public void run() {
-
-                final FXPlatformSupplier<Map<String, DebuggerObject>> dobs = project.getDebugger().runTestSetUp(ct.getQualifiedName());
-                
-                Platform.runLater(() -> {
-                    List<DataCollector.NamedTyped> recordObjects = new ArrayList<DataCollector.NamedTyped>();
-                    Iterator<Map.Entry<String,DebuggerObject>> it = dobs.get().entrySet().iterator();
-
-                    while(it.hasNext()) {
-                        Map.Entry<String,DebuggerObject> mapent = it.next();
-                        DebuggerObject objVal = mapent.getValue();
-
-                        if (! objVal.isNullObject()) {
-                            String actualName = pmf.putObjectOnBench(mapent.getKey(), objVal, objVal.getGenType(), null, Optional.empty());
-                            recordObjects.add(new DataCollector.NamedTyped(actualName, objVal.getClassName()));
-                        }
-                    }
-
-                    if (recordAsFixtureToBench)
-                    {
-                        DataCollector.fixtureToObjectBench(pmf.getPackage(), ct.getSourceFile(), recordObjects);
-                    }
-                });
             }
         }.start();
     }
@@ -666,7 +643,6 @@ public class UnitTestClassRole extends ClassRole
                 {
                     names.add(obj.getName());
                 }
-                DataCollector.objectBenchToFixture(pmf.getPackage(), ct.getSourceFile(), names);
             }
             
             // find the curly brackets for the setUp() method

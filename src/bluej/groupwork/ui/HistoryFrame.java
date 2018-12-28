@@ -45,7 +45,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.groupwork.HistoryInfo;
 import bluej.groupwork.LogHistoryListener;
 import bluej.groupwork.Repository;
@@ -279,8 +278,6 @@ public class HistoryFrame extends FXCustomizedDialog<Void>
                     historyInfoList = responseList;
 
                     resetFilterBoxes();
-
-                    DataCollector.teamHistoryProject(project, repository);
                 }
             }
         }

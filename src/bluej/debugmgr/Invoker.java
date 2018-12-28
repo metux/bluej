@@ -22,7 +22,6 @@
 package bluej.debugmgr;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.compiler.CompileInputFile;
 import bluej.compiler.CompileObserver;
 import bluej.compiler.CompileReason;
@@ -1047,8 +1046,6 @@ public class Invoker
      */
     private void errorMessage(String filename, long lineNo, String message)
     {
-        DataCollector.invokeCompileError(pkg, commandString, message);
-        
         if (dialog != null)
         {
             dialog.setErrorMessage("Error: " + message);
@@ -1223,8 +1220,6 @@ public class Invoker
                         }
                         
                         PkgMgrFrame pmf = PkgMgrFrame.findFrame(pkg);
-                        
-                        DataCollector.invokeMethodSuccess(pkg, commandString, benchName, resultType, pmf == null ? -1 : pmf.getTestIdentifier(), ir.getUniqueIdentifier());
                     }
                     
                     ir.setResultObject(resultObj);
@@ -1233,20 +1228,10 @@ public class Invoker
 
                 case Debugger.EXCEPTION :
                     ExceptionDescription exc = result.getException();
-                    if (!codepad)
-                    {
-                        //Only record this if it wasn't on behalf of the codepad (codepad records separately):
-                        DataCollector.invokeMethodException(pkg, commandString, exc);
-                    }
                     watcher.putException(exc, ir);
                     break;
 
                 case Debugger.TERMINATED : // terminated by user
-                    if (!codepad)
-                    {
-                        //Only record this if it wasn't on behalf of the codepad (codepad records separately):
-                        DataCollector.invokeMethodTerminated(pkg, commandString);
-                    }
                     watcher.putVMTerminated(ir);
                     break;
 

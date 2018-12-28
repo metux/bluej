@@ -40,7 +40,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.groupwork.Repository;
 import bluej.groupwork.StatusHandle;
 import bluej.groupwork.StatusListener;
@@ -296,8 +295,6 @@ public class StatusFrame extends FXCustomizedDialog<Void>
                     {
                         statusMap.put(s.getFile(), s.getStatus().getStatusString());
                     }
-
-                    DataCollector.teamStatusProject(project, repository, statusMap);
                 }
                 refreshButton.setDisable(false);
                 if (statusTable.getItems() != null ) {

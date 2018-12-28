@@ -24,7 +24,6 @@ package bluej.debugmgr.codepad;
 
 import bluej.BlueJEvent;
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.debugger.DebuggerField;
 import bluej.debugger.DebuggerObject;
 import bluej.debugger.ExceptionDescription;
@@ -682,7 +681,6 @@ public class CodePad extends VBox
 
                 if (resultString.equals(nullLabel))
                 {
-                    DataCollector.codePadSuccess(frame.getPackage(), ir.getOriginalCommand(), resultString);
                     output(resultString);
                 }
                 else
@@ -694,14 +692,12 @@ public class CodePad extends VBox
                         DebuggerObject resultObject = resultField.getValueObject(null);
                         String resultType = resultObject.getGenType().toString(true);
                         String resultOutputString = resultString + "   (" + resultType + ")";
-                        DataCollector.codePadSuccess(frame.getPackage(), ir.getOriginalCommand(), resultOutputString);
                         objectOutput(resultOutputString, new ObjectInfo(resultObject, ir));
                     }
                     else
                     {
                         String resultType = resultField.getType().toString(true);
                         String resultOutputString = resultString + "   (" + resultType + ")";
-                        DataCollector.codePadSuccess(frame.getPackage(), ir.getOriginalCommand(), resultOutputString);
                         output(resultOutputString);
                     }
                 }
@@ -776,7 +772,6 @@ public class CodePad extends VBox
                 }
 
                 removeNewlyDeclareds();
-                DataCollector.codePadError(frame.getPackage(), ir.getOriginalCommand(), errorMessage);
                 showErrorMsg(errorMessage);
                 errorMessage = null;
             }
@@ -802,7 +797,6 @@ public class CodePad extends VBox
 
             removeNewlyDeclareds();
             String message = exception.getClassName() + " (" + exception.getText() + ")";
-            DataCollector.codePadException(frame.getPackage(), ir.getOriginalCommand(), message);
             showExceptionMsg(message);
         }
 
@@ -820,7 +814,6 @@ public class CodePad extends VBox
 
 
             String message = Config.getString("pkgmgr.codepad.vmTerminated");
-            DataCollector.codePadError(frame.getPackage(), ir.getOriginalCommand(), message);
             error(message);
 
             completeExecution();

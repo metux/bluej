@@ -859,10 +859,6 @@ collect.dialog.ethics2=Zm\u011bn\u00edte-li sv\u016fj n\u00e1zor na svoji pomoc 
 m\u016f\u017eete kdykoliv p\u0159estat p\u0159isp\u00edvat vyu\u017eit\u00edm za\u0161krt\u00e1vac\u00edho pole \
 v dialogov\u00e9m okn\u011b N\u00e1stroje/Nastaven\u00ed/Rozhran\u00ed
 
-collect.status.optedin=You are currently allowing anonymous research data collection
-collect.status.nextsession=You will allow anonymous data collection research next time BlueJ is started
-collect.status.optedout=You are currently not participating in the anonymous research data collection
-
 #Raspberry Pi
 raspberrypi.error.sudo=P\u0159\u00edstup sudo (superuser do) bez ud\u00e1n\u00ed hesla nen\u00ed k dispozici. \
 Pokra\u010dujete bez p\u0159\u00edstupu k hardwaru.\n\

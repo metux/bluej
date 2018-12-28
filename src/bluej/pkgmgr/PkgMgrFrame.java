@@ -24,7 +24,6 @@ package bluej.pkgmgr;
 import bluej.*;
 import bluej.pkgmgr.AboutDialogTemplate;
 import bluej.classmgr.BPClassLoader;
-import bluej.collect.DataCollector;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.debugger.Debugger;
@@ -1205,8 +1204,6 @@ public class PkgMgrFrame
 
         getPackage().closeAllEditors();
         getPackage().setEditor(null);
-        
-        DataCollector.packageClosed(thePkg);
 
         Project proj = getProject();
 
@@ -1412,7 +1409,6 @@ public class PkgMgrFrame
             }
             else if (JavaNames.isIdentifier(newObjectName))
             {
-                DataCollector.benchGet(getPackage(), newObjectName, gotObj.getClassName(), getTestIdentifier());
                 putObjectOnBench(newObjectName, gotObj, iType, ir, animateFromScenePoint);
                 tryAgain = false;
             }
@@ -1563,8 +1559,6 @@ public class PkgMgrFrame
             thePkg.compileQuiet(target, CompileReason.NEW_CLASS, CompileType.INDIRECT_USER_COMPILE);
         }
 
-        DataCollector.addClass(thePkg, target);
-        
         return true;
     }
 
@@ -1596,8 +1590,6 @@ public class PkgMgrFrame
                 JavaFXUtil.scrollTo(pkgEditorScrollPane, target.getNode());
             }
             target.analyseSource();
-
-            DataCollector.addClass(getPackage(), target);
         }
         catch (IOException e)
         {
@@ -2462,9 +2454,7 @@ public class PkgMgrFrame
     {
         if (testTarget != null) {
             testRecordingEnded();
-            
-            DataCollector.endTestMethod(getPackage(), testIdentifier);
-            
+
             if (testTarget.getRole() instanceof UnitTestClassRole) {
                 UnitTestClassRole utcr = (UnitTestClassRole) testTarget.getRole();
                 
@@ -2490,8 +2480,6 @@ public class PkgMgrFrame
     public void doCancelTest()
     {
         testRecordingEnded();
-        
-        DataCollector.cancelTestMethod(getPackage(), testIdentifier);
 
         // remove objects from object bench (may have been put there
         // when testing was started)
@@ -2541,7 +2529,6 @@ public class PkgMgrFrame
         this.testTargetMethod = testName;
         this.testTarget = testClass;
         this.testIdentifier = nextTestIdentifier.incrementAndGet(); // Allocate next test identifier
-        DataCollector.startTestMethod(getPackage(), testIdentifier, testClass.getSourceFile(), testName);
     }
 
     /**
@@ -2630,7 +2617,6 @@ public class PkgMgrFrame
         if (!isEmptyFrame())
         {
             getProject().restartVM();
-            DataCollector.restartVM(getProject());
         }
     }
 

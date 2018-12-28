@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javafx.application.Platform;
-import bluej.collect.DataCollector;
 import bluej.editor.stride.FXTabbedEditor;
 import bluej.pkgmgr.Package;
 import bluej.pkgmgr.PkgMgrFrame;
@@ -105,7 +104,6 @@ public class BProject
     public void restartVM() throws ProjectNotOpenException
     {
         projectId.getBluejProject().restartVM();
-        DataCollector.debuggerTerminate(projectId.getBluejProject());
     }
     
     /**

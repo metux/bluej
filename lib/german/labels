@@ -819,10 +819,6 @@ collect.dialog.ethics1=Wenn Sie der Teilnahme zustimmen, erlauben Sie uns, anony
 collect.dialog.ethics.seemore=Mehr Information hier
 collect.dialog.ethics2=Wenn Sie sich sp\u00e4ter anders entscheiden sollten, k\u00f6nnen Sie Ihre Teilnahme jederzeit im Einstellungen/Diverses-Dialog abstellen.
 
-collect.status.optedin=Sie nehmen im Moment an der anonymen Datensammlung zu Forschungszwecken teil
-collect.status.nextsession=Die anonyme Datensammlung beginnt, wenn BlueJ das n\u00E4chste Mal gestartet wird
-collect.status.optedout=Sie nehmen im Moment nicht an der anonymen Datensammlung zu Forschungszwecken teil
-
 #Raspberry Pi
 raspberrypi.error.sudo='Sudo'-Zugriff ohne Passwort nicht verf\u00fcgbar. Kein Hardwarezugriff.\nF\u00fcr mehr Information, siehe: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Kein Hardwarezugriff

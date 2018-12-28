@@ -32,7 +32,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.TilePane;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.debugger.DebuggerObject;
 import bluej.debugger.gentype.GenTypeClass;
 import bluej.debugmgr.NamedValue;
@@ -257,9 +256,7 @@ public class ObjectBench extends javafx.scene.control.ScrollPane implements Valu
         if(wrapper == selectedObject) {
             setSelectedObject(null);
         }
-     
-        DataCollector.removeObject(wrapper.getPackage(), wrapper.getName());
-        
+
         wrapper.prepareRemove();
         wrapper.getPackage().getDebugger().removeObject(scopeId, wrapper.getName());
         objects.remove(wrapper);

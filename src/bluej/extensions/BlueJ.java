@@ -22,7 +22,6 @@
 package bluej.extensions;
 
 import bluej.*;
-import bluej.collect.DataCollector;
 import bluej.extensions.event.*;
 import bluej.extensions.event.PackageListener;
 import bluej.extensions.painter.ExtensionClassTargetPainter;
@@ -396,7 +395,7 @@ public final class BlueJ
      */
     public String getDataCollectionUniqueID()
     {
-        return DataCollector.getUserID();
+        return null;
     }
 
 
@@ -536,10 +535,6 @@ public final class BlueJ
             synchronized (applicationListeners) {
                 applicationListeners.add(listener);
             }
-
-            // Relay a previous given up message:
-            if (DataCollector.hasGivenUp())
-                listener.dataSubmissionFailed(new ApplicationEvent(ApplicationEvent.DATA_SUBMISSION_FAILED_EVENT));
         }
     }
 

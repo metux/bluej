@@ -22,7 +22,6 @@
 package bluej.pkgmgr;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.debugger.DebuggerTestResult;
 import bluej.pkgmgr.target.ClassTarget;
 import bluej.pkgmgr.target.role.UnitTestClassRole;
@@ -144,8 +143,6 @@ public class TestRunnerThread extends Thread
 
         if (quiet)
             pmf.setStatus(methodName + " " + Config.getString("pkgmgr.test.succeeded"));
-
-        DataCollector.testResult(pmf.getPackage(), lastResult);
     }
 
     @OnThread(Tag.FXPlatform)

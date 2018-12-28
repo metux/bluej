@@ -24,7 +24,6 @@ package bluej.editor.stride;
 import bluej.BlueJTheme;
 import bluej.Config;
 import bluej.Main;
-import bluej.collect.DataCollector;
 import bluej.editor.stride.FrameCatalogue.Hint;
 import bluej.pkgmgr.Project;
 import bluej.prefmgr.PrefMgr;

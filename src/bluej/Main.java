@@ -21,7 +21,6 @@
  */
 package bluej;
 
-import bluej.collect.DataCollector;
 import bluej.extensions.event.ApplicationEvent;
 import bluej.extmgr.ExtensionWrapper;
 import bluej.extmgr.ExtensionsManager;
@@ -120,7 +119,6 @@ public class Main
         SwingUtilities.invokeLater(() -> {
             List<ExtensionWrapper> loadedExtensions = ExtensionsManager.getInstance().getLoadedExtensions(null);
             Platform.runLater(() -> {
-                DataCollector.bluejOpened(getOperatingSystem(), getJavaVersion(), getBlueJVersion(), getInterfaceLanguage(), loadedExtensions);
                 processArgs(args);
             });
         });
@@ -504,8 +502,6 @@ public class Main
     @OnThread(Tag.FXPlatform)
     private static void exit()
     {
-        DataCollector.bluejClosed();
-        
         // save configuration properties
         Config.handleExit();
         // exit with success status

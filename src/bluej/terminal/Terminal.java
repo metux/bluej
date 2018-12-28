@@ -25,7 +25,6 @@ import bluej.BlueJEvent;
 import bluej.BlueJEventListener;
 import bluej.BlueJTheme;
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.debugger.Debugger;
 import bluej.debugger.DebuggerField;
 import bluej.debugger.DebuggerObject;
@@ -330,8 +329,6 @@ public final class Terminal
      */
     public void showHide(boolean show)
     {
-        DataCollector.showHideTerminal(project, show);
-
         if (show)
         {
             window.show();

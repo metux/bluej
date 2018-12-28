@@ -48,7 +48,6 @@ import java.util.stream.Collectors;
 import javax.swing.SwingUtilities;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.collect.DiagnosticWithShown;
 import bluej.compiler.CompileInputFile;
 import bluej.compiler.CompileReason;
@@ -1342,14 +1341,7 @@ public class ClassTarget extends DependentTarget
     public String breakpointToggleEvent(int lineNo, boolean set)
     {
         if (isCompiled()) {
-            String possibleError = getPackage().getDebugger().toggleBreakpoint(getQualifiedName(), lineNo, set, null);
-
-            if (possibleError == null && getPackage() != null)
-            {
-                DataCollector.debuggerBreakpointToggle(getPackage(), getSourceFile(), lineNo, set);
-            }
-            
-            return possibleError;
+            return getPackage().getDebugger().toggleBreakpoint(getQualifiedName(), lineNo, set, null);
         }
         else {
             return Config.getString("pkgmgr.breakpointMsg");
@@ -1903,8 +1895,6 @@ public class ClassTarget extends DependentTarget
                 ExtensionBridge.changeBDependencyTargetName(bDependency, getQualifiedName());
             }
 
-            DataCollector.renamedClass(getPackage(), oldFrameSourceFile, newFrameSourceFile, oldJavaSourceFile, newJavaSourceFile);
-
             // Take copy of listeners in case the rename causes new listeners to be added:
             for (TargetListener stateListener : new ArrayList<>(stateListeners))
             {
@@ -2380,7 +2370,6 @@ public class ClassTarget extends DependentTarget
                     return; // Abort
                 }
                 addStride((TopLevelCodeElement)elements.get(0));
-                DataCollector.convertJavaToStride(getPackage(), javaSourceFile, getFrameSourceFile());
             }
             catch (IOException | ParseFailure pf)
             {
@@ -2552,11 +2541,6 @@ public class ClassTarget extends DependentTarget
         prepareForRemoval();
         Package pkg = getPackage();
         pkg.removeTarget(this);
-        
-        // We must remove after the above, because it might involve saving, 
-        // and thus recording edits to the file
-        DataCollector.removeClass(pkg, frameSourceFile, javaSourceFile);
-
 
         // In Greenfoot we don't do detailed dependency tracking, so we just recompile the whole
         // package if any class is removed:
@@ -2594,9 +2578,6 @@ public class ClassTarget extends DependentTarget
             srcFile.delete();
         }
         sourceAvailable = SourceType.Java;
-
-        // getSourceFile() will now return the Java file:
-        DataCollector.convertStrideToJava(getPackage(), srcFile, getSourceFile());
     }
 
     /**

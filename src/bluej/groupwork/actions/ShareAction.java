@@ -32,7 +32,6 @@ import java.util.concurrent.ExecutionException;
 import javafx.application.Platform;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.groupwork.Repository;
 import bluej.groupwork.TeamSettingsController;
 import bluej.groupwork.TeamUtils;
@@ -149,7 +148,6 @@ public class ShareAction extends TeamAction
                     if (!result.isError())
                     {
                         pmf.setStatus(Config.getString("team.shared"));
-                        DataCollector.teamShareProject(project, repository);
                     }
                     else
                     {

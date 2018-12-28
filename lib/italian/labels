@@ -808,10 +808,6 @@ menu.help.copyright.line4=e THIRDPARTYLICENSE.txt.
 #Collection
 # The content for these is HTML, so don't use <, > or & without escaping:
 
-collect.status.optedin=Attualmente stai partecipando alla raccolta di informazioni
-collect.status.nextsession=Consentire la ricerca anonima dei dati la prossima volta che BlueJ si avvia
-collect.status.optedout=Attualmente non stai partecipando alla ricerca anonima dei dati
-
 #Raspberry Pi
 raspberrypi.error.sudo=Accesso sudo senza password non disponibile. Continuando senza accesso all'hardware.\nPer maggiori informazioni, vedere: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Nessun accesso all'hardware

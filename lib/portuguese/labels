@@ -805,10 +805,6 @@ collect.dialog.ethics1=Se voc\u00EA concordar em participar, voc\u00EA nos permi
 collect.dialog.ethics.seemore=Veja mais informa\u00E7\u00F5es
 collect.dialog.ethics2=Se voc\u00EA mudar de id\u00E9ia e n\u00E3o quiser mais nos ajudar com este trabalho, voc\u00EA pode parar de contribuir a qualquer momento usando a caixa de sele\u00E7\u00E3o localizada em: Ferramentas / Prefer\u00EAncias / Miscel\u00E2nea\r\n.
 
-collect.status.optedin=Atualmente voc\u00EA est\u00E1 permitindo a coleta de dados an\u00F4nimos para pesquisa
-collect.status.nextsession=Voc\u00EA vai permitir a  coleta de dados an\u00F4nimos para pesquisa na pr\u00F3xima vez BlueJ for iniciado
-collect.status.optedout=Atualmente voc\u00EA n\u00E3o est\u00E1 participando da coleta de dados an\u00F4nimos para pesquisa
-
 #Raspberry Pi
 raspberrypi.error.sudo=Acesso de sudo sem senha n\u00E3o est\u00E1 dispon\u00EDvel. Continuando sem acesso \u00E0 hardware.\\nPara mais informa\u00E7\u00F5es, por favor consulte: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=Sem acesso \u00E0 hardware

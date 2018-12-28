@@ -22,7 +22,6 @@
 package bluej.groupwork.actions;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.groupwork.StatusHandle;
 import bluej.groupwork.TeamUtils;
 import bluej.groupwork.TeamworkCommand;
@@ -155,7 +154,6 @@ public class PushAction extends TeamAction
                 commitCommentsFrame.stopProgress();
                 if (!result.isError()) {
                     if ( !result.wasAborted()) {
-                        DataCollector.teamPushProject(project, statusHandle.getRepository(), filesToPush);
                         commitCommentsFrame.displayMessage(Config.getString("team.push.statusDone"));
                     }
                 }

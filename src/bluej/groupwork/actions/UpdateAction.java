@@ -31,7 +31,6 @@ import java.util.List;
 import java.util.Set;
 
 import bluej.Config;
-import bluej.collect.DataCollector;
 import bluej.groupwork.StatusHandle;
 import bluej.groupwork.TeamUtils;
 import bluej.groupwork.TeamworkCommand;
@@ -224,7 +223,6 @@ public class UpdateAction extends TeamAction
                     // Addition of a new class:
                     ClassTarget ct = pkg.addClass(name);
                     pkg.positionNewTarget(ct);
-                    DataCollector.addClass(pkg, ct);
                     return;
                 }
                 
@@ -432,7 +430,6 @@ public class UpdateAction extends TeamAction
                 Set<File> files = new HashSet<File>();
                 files.addAll(filesToUpdate);
                 files.addAll(filesToForceUpdate);
-                DataCollector.teamUpdateProject(project, statusHandle.getRepository(), files);
                 PkgMgrFrame.displayMessage(project, Config.getString("team.update.statusDone"));
             }
             else {

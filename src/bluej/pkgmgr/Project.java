@@ -26,7 +26,6 @@ import bluej.Boot;
 import bluej.Config;
 import bluej.classmgr.BPClassLoader;
 import bluej.classmgr.ClassMgrPrefPanel;
-import bluej.collect.DataCollector;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.debugger.Debugger;
@@ -542,7 +541,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
         }
 
         ExtensionsManager.getInstance().projectOpening(proj);
-        DataCollector.projectOpened(proj, ExtensionsManager.getInstance().getLoadedExtensions(proj));
 
         proj.getImportScanner().startScanning();
 
@@ -570,8 +568,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
      */
     public static void cleanUp(Project project)
     {
-        DataCollector.projectClosed(project);
-
         if (project.hasExecControls()) {
             project.getExecControls().hide();
         }
@@ -898,7 +894,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
                     }
                 }
             }
-            DataCollector.inspectorObjectShow(pkg, inspector, benchName, obj.getClassName(), name);
         }
 
         return inspector;
@@ -972,7 +967,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
     public void removeInspector(DebuggerObject obj)
     {
         Inspector inspector = inspectors.remove(obj);
-        DataCollector.inspectorHide(this, inspector);
     }
 
     /**
@@ -983,7 +977,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
     public void removeInspector(DebuggerClass cls)
     {
         Inspector inspector = inspectors.remove(cls.getName());
-        DataCollector.inspectorHide(this, inspector);
     }
 
     /**
@@ -1012,7 +1005,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
     {
         for (Inspector inspector : inspectors.values()) {
             inspector.hide();
-            DataCollector.inspectorHide(this, inspector);
         }
 
         inspectors.clear();
@@ -1053,8 +1045,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
         else {
             updateInspector(inspector);
         }
-
-        DataCollector.inspectorClassShow(this, pkg, inspector, clss.getName());
 
         return inspector;
     }
@@ -1950,22 +1940,6 @@ public class Project implements DebuggerListener, DebuggerThreadListener, Inspec
                             pkg.hitHalt(thr);
                             break;
                     }
-                }
-
-                switch (event.getID())
-                {
-                    case DebuggerEvent.THREAD_HALT_UNKNOWN:
-                        DataCollector.debuggerHalt(Project.this, thr.getName(), ExecControls.getFilteredStack(thr.getStack()));
-                        break;
-                    case DebuggerEvent.THREAD_HALT_STEP_INTO:
-                        DataCollector.debuggerStepInto(Project.this, thr.getName(), ExecControls.getFilteredStack(thr.getStack()));
-                        break;
-                    case DebuggerEvent.THREAD_HALT_STEP_OVER:
-                        DataCollector.debuggerStepOver(Project.this, thr.getName(), ExecControls.getFilteredStack(thr.getStack()));
-                        break;
-                    case DebuggerEvent.THREAD_BREAKPOINT:
-                        DataCollector.debuggerHitBreakpoint(Project.this, thr.getName(), ExecControls.getFilteredStack(thr.getStack()));
-                        break;
                 }
             }
         });

@@ -877,10 +877,6 @@ collect.dialog.ethics1=If you agree to take part, you will permit us to collect 
 collect.dialog.ethics.seemore=See more information
 collect.dialog.ethics2=If you change your mind about helping us with this work, you can stop contributing at any time using the checkbox in the Tools/Preferences/Miscellaneous dialog.
 
-collect.status.optedin=You are currently allowing anonymous research data collection
-collect.status.nextsession=You will allow anonymous data collection research next time BlueJ is started
-collect.status.optedout=You are currently not participating in the anonymous research data collection
-
 #Raspberry Pi
 raspberrypi.error.sudo=Sudo access without password not available. Continuing without hardware access.\nFor more information, please see: http://bluej.org/faq.html#rasppi_hardware
 raspberrypi.error.sudo.title=No hardware access
