@@ -158,17 +158,6 @@ public interface EditorWatcher
     void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId);
 
     /**
-     * Records the view change of a Stride editor, between Stride, Java or Birdseye view.
-     *
-     * @param enclosingFrameXpath  The path for the frame that include the focused cursor, if any. May be <code>null</code>.
-     * @param cursorIndex          The focused cursor's index (if any) within the enclosing frame.
-     * @param oldView              The old view mode that been switch from.
-     * @param newView              The new view mode that been switch to.
-     * @param reason               The user interaction which triggered the change.
-     */
-    void recordViewModeChange(String enclosingFrameXpath, int cursorIndex, Frame.View oldView, Frame.View newView, Frame.ViewChangeReason reason);
-
-    /**
      * Notifies watcher whether we are showing the interface (docs) or not
      */
     void showingInterface(boolean showingInterface);

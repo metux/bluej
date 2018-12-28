@@ -2861,12 +2861,6 @@ public class ClassTarget extends DependentTarget
     }
 
     @Override
-    public void recordViewModeChange(String enclosingFrameXpath, int cursorIndex, Frame.View oldView, Frame.View newView, Frame.ViewChangeReason reason)
-    {
-        DataCollector.viewModeChange(getPackage(), getSourceFile(), enclosingFrameXpath, cursorIndex, oldView, newView, reason);
-    }
-
-    @Override
     public boolean isFront()
     {
         return isFront;
