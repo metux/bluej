@@ -2787,10 +2787,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
                 newDisplay.popup.setAnchorX(xpos);
                 newDisplay.popup.setAnchorY(ypos);
                 newDisplay.popup.show(getWindow());
-
-                if (watcher != null) {
-                    watcher.recordShowErrorMessage(details.identifier, Collections.emptyList());
-                }
             }
         }
         else if (errorDisplay != null)

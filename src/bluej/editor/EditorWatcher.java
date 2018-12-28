@@ -127,13 +127,6 @@ public interface EditorWatcher
     void recordShowErrorIndicators(Collection<Integer> identifiers);
 
     /**
-     * Record that the given error message was shown to the user.
-     * @param identifier Integer id of the error
-     * @param quickFixes The quick fixes shown with the error, if any (empty list if none)
-     */
-    void recordShowErrorMessage(int identifier, List<String> quickFixes);
-
-    /**
      * Record a list of early errors that were found.
      */
     void recordEarlyErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier);

@@ -75,9 +75,6 @@ public abstract class NonCodeEditableTarget extends EditableTarget
     public void recordSelected() { }
 
     @Override
-    public void recordShowErrorMessage(int identifier, List<String> quickFixes) { }
-
-    @Override
     public void recordEarlyErrors(List<DiagnosticWithShown> diagnostics, int compilationIdentifier) { }
 
     @Override

@@ -136,7 +136,6 @@ public class ErrorAndFixDisplay
     {
         final EditorWatcher watcher = editor.getFrameEditor().getWatcher();
         List<String> fixDisplayText = Utility.mapList(fixes, FixDisplay::getDisplayText);
-        watcher.recordShowErrorMessage(error.getIdentifier(), fixDisplayText);
     }
 
     @OnThread(Tag.FXPlatform)
