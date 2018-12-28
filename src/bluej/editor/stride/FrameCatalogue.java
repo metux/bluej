@@ -29,7 +29,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import bluej.collect.StrideEditReason;
 import bluej.stride.framedjava.frames.StrideCategory;
 import bluej.stride.generic.ExtensionDescription.ExtensionSource;
 import bluej.stride.generic.InteractionManager;
@@ -385,7 +384,6 @@ public class FrameCatalogue extends VBox
             if (currentCursor != null)
             {
                 InteractionManager editor = currentCursor.getEditor();
-                editor.recordEdits(StrideEditReason.FLUSH);
                 FrameSelection selection = currentCursor.getEditor().getSelection();
                 if (selection.getSelected().isEmpty())
                 {
@@ -393,7 +391,6 @@ public class FrameCatalogue extends VBox
                     currentCursor.insertBlockAfter(f);
                     f.markFresh();
                     f.focusWhenJustAdded();
-                    editor.recordEdits(StrideEditReason.SINGLE_FRAME_INSERTION_CHEAT);
                 }
                 else
                 {
@@ -407,7 +404,6 @@ public class FrameCatalogue extends VBox
                     selection.clear();
                     newFrame.markFresh();
                     newFrame.focusWhenJustAdded();
-                    editor.recordEdits(StrideEditReason.SELECTION_WRAP_CHEAT);
                 }
             }
             e.consume();

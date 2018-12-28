@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import bluej.Config;
-import bluej.collect.StrideEditReason;
 import bluej.stride.generic.FrameCursor;
 import bluej.stride.slots.EditableSlot.MenuItemOrder;
 import bluej.stride.generic.Frame;
@@ -68,11 +67,9 @@ public class DeleteFrameOperation extends FrameOperation
     @OnThread(Tag.FXPlatform)
     protected void execute(List<Frame> frames)
     {
-        editor.recordEdits(StrideEditReason.FLUSH);
         int effort = frames.stream().mapToInt(Frame::calculateEffort).sum();
         editor.showUndoDeleteBanner(effort);
         deleteFrames(frames, editor);
-        editor.recordEdits(StrideEditReason.DELETE_FRAMES_MENU);
     }
 
     @OnThread(Tag.FXPlatform)

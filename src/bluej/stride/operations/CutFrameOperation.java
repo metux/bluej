@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import bluej.Config;
-import bluej.collect.StrideEditReason;
 import bluej.stride.slots.EditableSlot.MenuItemOrder;
 import bluej.stride.generic.Frame;
 import bluej.stride.generic.InteractionManager;
@@ -50,10 +49,8 @@ public class CutFrameOperation extends FrameOperation
     {
         if (frames.size() > 0)
         {
-            editor.recordEdits(StrideEditReason.FLUSH);
             new CopyFrameAsStrideOperation(editor).execute(frames);
             DeleteFrameOperation.deleteFrames(frames, editor);
-            editor.recordEdits(StrideEditReason.CUT_FRAMES);
         }
     }
 

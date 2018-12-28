@@ -22,7 +22,6 @@
 package bluej.editor.stride;
 
 import bluej.Config;
-import bluej.collect.StrideEditReason;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.debugger.DebuggerThread;
@@ -1404,8 +1403,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     {
         boolean shouldDisable = !dragTarget.getParentCanvas().getParent().getFrame().isFrameEnabled();
 
-        editor.recordEdits(StrideEditReason.FLUSH);
-
         // We must add blocks in reverse order after cursor:
         Collections.reverse(dragSourceFrames);
         List<CodeElement> elements = GreenfootFrameUtil.getElementsForMultipleFrames(dragSourceFrames);
@@ -1417,8 +1414,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
         }
         if (!copying)
             dragSourceFrames.forEach(src -> src.getParentCanvas().removeBlock(src));
-
-        editor.recordEdits(fromShelf ? StrideEditReason.FRAMES_DRAG_SHELF : StrideEditReason.FRAMES_DRAG);
     }
 
     /**
@@ -1898,21 +1893,17 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
             endRecordingState(cursorOrSlot != null ? cursorOrSlot.getRecallableFocus() : null);
         }
 
-        editor.recordEdits(StrideEditReason.FLUSH);
         undoRedoManager.startRestoring();
         updateClassContents(undoRedoManager.undo());
         undoRedoManager.stopRestoring();
-        editor.recordEdits(StrideEditReason.UNDO_GLOBAL);
     }
 
     @OnThread(Tag.FXPlatform)
     public void redo()
     {
-        editor.recordEdits(StrideEditReason.FLUSH);
         undoRedoManager.startRestoring();
         updateClassContents(undoRedoManager.redo());
         undoRedoManager.stopRestoring();
-        editor.recordEdits(StrideEditReason.REDO_GLOBAL);
     }
 
     private void updateClassContents(FrameState state)
@@ -2793,13 +2784,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     public FrameEditor getFrameEditor()
     {
         return editor;
-    }
-
-    @Override
-    @OnThread(Tag.FXPlatform)
-    public void recordEdits(StrideEditReason reason)
-    {
-        editor.recordEdits(reason);
     }
 
     @Override

@@ -30,7 +30,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import bluej.collect.StrideEditReason;
 import bluej.editor.stride.FrameCatalogue;
 
 import bluej.stride.framedjava.ast.StructuredSlotFragment;
@@ -1216,10 +1215,8 @@ public abstract class StructuredSlot<SLOT_FRAGMENT extends StructuredSlotFragmen
                 recentValues.forEach(v -> {
                     MenuItem item = new MenuItem(v);
                     item.setOnAction(e -> {
-                        editor.recordEdits(StrideEditReason.FLUSH);
                         setText(v);
                         modified();
-                        editor.recordEdits(StrideEditReason.UNDO_LOCAL);
                     });
                     recentMenu.getItems().add(item);
                 });

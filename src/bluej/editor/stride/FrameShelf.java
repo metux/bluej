@@ -53,7 +53,6 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import bluej.collect.StrideEditReason;
 import bluej.parser.AssistContent;
 import bluej.stride.framedjava.ast.JavaFragment;
 import bluej.stride.framedjava.ast.Loader;
@@ -304,12 +303,6 @@ public class FrameShelf implements InteractionManager, CanvasParent, FrameTypeCh
     }
 
     @Override
-    public void recordEdits(StrideEditReason reason)
-    {
-         // Not applicable
-    }
-
-    @Override
     public void afterRegenerateAndReparse(FXPlatformRunnable action)
     {
         // TODO
@@ -526,11 +519,6 @@ public class FrameShelf implements InteractionManager, CanvasParent, FrameTypeCh
         boolean shouldDisable = parentFrame != null && !parentFrame.isFrameEnabled();
 
         InteractionManager editor = dragSourceFrames.get(0).getEditor();
-        
-        // We only record if we are moving from an editor.
-        // Copying from editor, or coming from shelf, doesn't change code.
-        if (!fromShelf && !copying)
-            editor.recordEdits(StrideEditReason.FLUSH);
 
         // We must add blocks in reverse order after cursor:
         Collections.reverse(dragSourceFrames);
@@ -543,9 +531,6 @@ public class FrameShelf implements InteractionManager, CanvasParent, FrameTypeCh
         }
         if (!copying)
             dragSourceFrames.forEach(src -> src.getParentCanvas().removeBlock(src));
-
-        if (!fromShelf && !copying)
-            editor.recordEdits(StrideEditReason.FRAMES_DRAG_SHELF);
     }
 
     public void cleanup()

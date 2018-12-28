@@ -25,7 +25,6 @@ package bluej.editor.stride;
 
 import bluej.Config;
 import bluej.collect.DiagnosticWithShown;
-import bluej.collect.StrideEditReason;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.compiler.Diagnostic;
@@ -1337,14 +1336,6 @@ public class FrameEditor implements Editor
     public EditorWatcher getWatcher()
     {
         return watcher;
-    }
-
-    @OnThread(Tag.FXPlatform)
-    public void recordEdits(StrideEditReason reason)
-    {
-        SaveResult result = saveFX();
-        if (result.exception != null)
-            Debug.reportError(result.exception);
     }
 
     @Override

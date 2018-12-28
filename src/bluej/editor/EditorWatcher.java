@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.List;
 
 import bluej.collect.DiagnosticWithShown;
-import bluej.collect.StrideEditReason;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;
 import bluej.editor.stride.FrameCatalogue;

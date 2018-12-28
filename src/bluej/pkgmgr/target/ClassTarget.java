@@ -50,7 +50,6 @@ import javax.swing.SwingUtilities;
 import bluej.Config;
 import bluej.collect.DataCollector;
 import bluej.collect.DiagnosticWithShown;
-import bluej.collect.StrideEditReason;
 import bluej.compiler.CompileInputFile;
 import bluej.compiler.CompileReason;
 import bluej.compiler.CompileType;

@@ -22,7 +22,6 @@
 package bluej.stride.generic;
 
 import bluej.Config;
-import bluej.collect.StrideEditReason;
 import bluej.stride.framedjava.ast.Loader;
 import bluej.stride.framedjava.elements.CodeElement;
 import bluej.stride.framedjava.frames.CodeFrame;
@@ -124,9 +123,7 @@ public abstract class SingleLineFrame extends Frame
                     @OnThread(Tag.FXPlatform)
                     protected void execute(List<Frame> frames)
                     {
-                        editor.recordEdits(StrideEditReason.FLUSH);
                         getParentCanvas().replaceBlock(SingleLineFrame.this, Loader.loadElement(state.value).createFrame(editor));
-                        editor.recordEdits(StrideEditReason.UNDO_LOCAL);
                     }
 
                     @Override

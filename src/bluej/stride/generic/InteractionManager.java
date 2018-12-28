@@ -21,7 +21,6 @@
  */
 package bluej.stride.generic;
 
-import bluej.collect.StrideEditReason;
 import bluej.editor.stride.FrameCatalogue;
 import bluej.editor.stride.FrameEditor;
 import bluej.stride.framedjava.ast.SlotFragment;
@@ -215,9 +214,6 @@ public interface InteractionManager extends SuggestionListParent
      */
     public void modifiedFrame(Frame f, boolean force);
 
-    @OnThread(Tag.FXPlatform)
-    public void recordEdits(StrideEditReason reason);
-    
     /**
      * Once loading is complete, generates the Java code, parses it, then runs the given action if not-null
      */
