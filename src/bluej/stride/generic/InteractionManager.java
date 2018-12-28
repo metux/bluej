@@ -159,9 +159,6 @@ public interface InteractionManager extends SuggestionListParent
     @OnThread(Tag.FXPlatform)
     BooleanProperty cheatSheetShowingProperty();
 
-    @OnThread(Tag.FXPlatform)
-    void recordUnknownCommandKey(Frame enclosingFrame, int index, char key);
-
     /**
      * Records the reason and the focused cursor info, if any, when showing or hiding the FrameCatalogue of this editor.
      *

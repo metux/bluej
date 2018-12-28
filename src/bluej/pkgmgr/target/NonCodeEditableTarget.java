@@ -93,9 +93,6 @@ public abstract class NonCodeEditableTarget extends EditableTarget
     public void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId) { }
 
     @Override
-    public void recordUnknownCommandKey(String enclosingFrameXpath, int cursorIndex, char key) { }
-
-    @Override
     public void recordShowHideFrameCatalogue(String enclosingFrameXpath, int cursorIndex, boolean show, FrameCatalogue.ShowReason reason) { }
 
     @Override

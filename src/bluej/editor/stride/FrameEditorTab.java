@@ -2830,17 +2830,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
 
     @Override
     @OnThread(Tag.FXPlatform)
-    public void recordUnknownCommandKey(Frame enclosingFrame, int cursorIndex, char key)
-    {
-        if (key < 32 || key == 127)
-            return; // Don't worry about command keys
-
-        recordEdits(StrideEditReason.FLUSH);
-        editor.getWatcher().recordUnknownCommandKey(getXPath(enclosingFrame), cursorIndex, key);
-    }
-
-    @Override
-    @OnThread(Tag.FXPlatform)
     public void recordShowHideFrameCatalogue(boolean show, FrameCatalogue.ShowReason reason)
     {
         FrameCursor focusedCursor = getFocusedCursor();

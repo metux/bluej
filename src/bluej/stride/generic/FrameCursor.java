@@ -215,14 +215,9 @@ public class FrameCursor implements RecallableFocus
                         editor.recordShowHideFrameCatalogue(true, FrameCatalogue.ShowReason.UNKNOWN_FRAME_COMMAND);
                     }
                 }
-                editor.recordUnknownCommandKey(getEnclosingFrame(), getCursorIndex(), key);
                 //Ignore one-off mis-typing, just to stop every slip-up triggering a dialog
                 return true;
             }
-        }
-        else
-        {
-            editor.recordUnknownCommandKey(getEnclosingFrame(), getCursorIndex(), key);
         }
         editor.getSelection().clear();
         return false;

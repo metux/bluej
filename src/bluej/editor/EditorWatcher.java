@@ -157,8 +157,6 @@ public interface EditorWatcher
     // See corresponding DataCollector methods for more parameter info.
     void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId);
 
-    void recordUnknownCommandKey(String enclosingFrameXpath, int cursorIndex, char key);
-
     /**
      * Records the reason and other parameters when showing or hiding the FrameCatalogue of this object.
      *
