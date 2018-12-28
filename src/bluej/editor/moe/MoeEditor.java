@@ -3395,7 +3395,6 @@ public final class MoeEditor extends ScopeColorsBorderPane
             suggestionList.highlightFirstEligible();
             suggestionList.show(sourcePane, spLoc);
             Position pos = sourcePane.offsetToPosition(originalPosition, Bias.Forward);
-            watcher.recordCodeCompletionStarted(pos.getMajor() + 1, pos.getMinor() + 1, null, null, prefix, suggestionList.getRecordingId());
 
         } else {
             /*

@@ -790,7 +790,6 @@ public abstract class StructuredSlot<SLOT_FRAGMENT extends StructuredSlotFragmen
                 final int stringPos = topLevel.caretPosToStringPos(topLevel.getCurrentPos(), true);
                 PosInSourceDoc posInFile = getSlotElement().getPosInSourceDoc(stringPos);
                 completionCalculator.withCalculatedSuggestionList(posInFile, this.asExpressionSlot(), parentCodeFrame.getCode(), StructuredSlot.this, (targetType == null /* || not at start getStartOfCurWord() != 0 */) ? null : targetType.get(), field == topLevel.getFirstField(), suggList -> {
-                    editor.recordCodeCompletionStarted(getSlotElement(), stringPos, field.getText().substring(0, caretPosition), suggList.getRecordingId());
                     withSuggList.accept(suggList);
                 });
 

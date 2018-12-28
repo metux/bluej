@@ -145,10 +145,6 @@ public interface InteractionManager extends SuggestionListParent
 
     // See corresponding DataCollector methods for more parameter info.
     @OnThread(Tag.FXPlatform)
-    void recordCodeCompletionStarted(SlotFragment position, int index, String stem, int codeCompletionId);
-
-    // See corresponding DataCollector methods for more parameter info.
-    @OnThread(Tag.FXPlatform)
     void recordCodeCompletionEnded(SlotFragment position, int index, String stem, String completion, int codeCompletionId);
 
     @OnThread(Tag.FXPlatform)

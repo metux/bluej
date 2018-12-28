@@ -143,10 +143,6 @@ public interface EditorWatcher
      */
     void recordFix(int errorIdentifier, int fixIndex);
 
-    // Either lineNumber and columnNumber are non-null and xpath and elementOffset are null,
-    // or vice versa.  See corresponding DataCollector methods for more parameter info.
-    void recordCodeCompletionStarted(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, int codeCompletionId);
-
     // See corresponding DataCollector methods for more parameter info.
     void recordCodeCompletionEnded(Integer lineNumber, Integer columnNumber, String xpath, Integer elementOffset, String stem, String replacement, int codeCompletionId);
 

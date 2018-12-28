@@ -2811,15 +2811,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
 
     @Override
     @OnThread(Tag.FXPlatform)
-    public void recordCodeCompletionStarted(SlotFragment element, int index, String stem, int codeCompletionId)
-    {
-        recordEdits(StrideEditReason.FLUSH);
-        editor.getWatcher().recordCodeCompletionStarted(null, null,
-                getLocationMap().locationFor(element), index, stem, codeCompletionId);
-    }
-
-    @Override
-    @OnThread(Tag.FXPlatform)
     public void recordCodeCompletionEnded(SlotFragment element, int index, String stem, String replacement, int codeCompletionId)
     {
         recordEdits(StrideEditReason.CODE_COMPLETION);

@@ -230,12 +230,6 @@ public class FrameShelf implements InteractionManager, CanvasParent, FrameTypeCh
     }
 
     @Override
-    public void recordCodeCompletionStarted(SlotFragment position, int index, String stem, int codeCompletionId)
-    {
-        // Not applicable
-    }
-
-    @Override
     public void recordCodeCompletionEnded(SlotFragment position, int index, String stem, String completion, int codeCompletionId)
     {
         // Not applicable

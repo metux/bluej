@@ -567,7 +567,6 @@ public abstract class TextSlot<SLOT_FRAGMENT extends TextSlotFragment> implement
                 final int stringPos = field.getCaretPosition();
                 //Debug.time("!!! Calculating suggestions");
                 completionCalculator.withCalculatedSuggestionList(getSlotElement().getPosInSourceDoc(stringPos), codeFrameParent.getCode(), listener, suggList -> {
-                    editor.recordCodeCompletionStarted(getSlotElement(), stringPos, getCurWord(), suggList.getRecordingId());
                     handler.accept(suggList);
                 });
 
