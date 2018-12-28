@@ -1324,7 +1324,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     @OnThread(Tag.FXPlatform)
     private void changeViewMode(View newView, Frame.ViewChangeReason reason)
     {
-        recordViewChange(viewProperty.get(), newView, reason);
         viewProperty.set(newView);
     }
 
@@ -2833,25 +2832,6 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     public ImageView makeClassImageView()
     {
         return makeClassGraphicIcon(imageProperty, 48, true);
-    }
-
-    /**
-     * Records the reason, the old view and the current one, when switching between different show modes in the Stride editor.
-     *
-     * @param oldView              The old view mode that been switch from.
-     * @param newView              The new view mode that been switch to.
-     * @param reason               The user interaction which triggered the change.
-     */
-    @OnThread(Tag.FXPlatform)
-    public void recordViewChange(View oldView, View newView, Frame.ViewChangeReason reason)
-    {
-        FrameCursor focusedCursor = getFocusedCursor();
-        editor.getWatcher().recordViewModeChange(
-                focusedCursor != null ? getXPath(focusedCursor.getEnclosingFrame()) : null,
-                focusedCursor != null ? focusedCursor.getCursorIndex() : -1,
-                oldView,
-                newView,
-                reason);
     }
 
     @Override
