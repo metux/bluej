@@ -271,7 +271,8 @@ public final class Config
     private static void initLanguage()
     {
         language = commandProps.getProperty("bluej.language", null);
-        
+        System.err.println("locale: "+Locale.getDefault().getLanguage());
+
         // If no language is set, try to auto-detect from locale:
         if (language == null) {
             language = DEFAULT_LANGUAGE;
