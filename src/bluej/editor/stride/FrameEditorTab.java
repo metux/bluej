@@ -2743,11 +2743,7 @@ public class FrameEditorTab extends FXTab implements InteractionManager, Suggest
     @OnThread(Tag.FXPlatform)
     public void setParent(FXTabbedEditor parent, boolean partOfMove)
     {
-        if (!partOfMove && parent != null)
-            editor.getWatcher().recordOpen();
-
         this.parent.set(parent);
-
     }
 
     //package-visible

@@ -2724,16 +2724,6 @@ public class ClassTarget extends DependentTarget
         properties.put(key, value);
     }
 
-    @Override
-    public void recordOpen()
-    {
-        if (recordedAsOpen == false && hasSourceCode())
-        {
-            DataCollector.openClass(getPackage(), getSourceFile());
-            recordedAsOpen = true;
-        }
-    }
-
     public CompileInputFile getCompileInputFile()
     {
         return new CompileInputFile(getJavaSourceFile(), getSourceFile());
