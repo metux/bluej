@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.Locale;
 
 /**
  * This class is the BlueJ boot loader. bluej.Boot is the class that should be 
@@ -171,6 +172,7 @@ public class Boot
     public static void main(String[] args)
     {
         System.err.println("Bootup");
+        System.err.println(" locale: "+Locale.getDefault().getLanguage());
         cmdLineArgs = args;
         Application.launch(App.class, args);
     }
